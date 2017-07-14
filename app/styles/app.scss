@@ -1,7 +1,7 @@
 @import "bootstrap";
 
-$marketing: darken(#F29490, 5%);
-$copy: #353131;
+$marketing: darken(#F29490, 10%);
+$copy: #484848;
 
 .navbar-brand {
   color: $marketing;
@@ -21,8 +21,40 @@ $copy: #353131;
     color: $marketing;
   }
   .subtitle {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: 300;
     color: $copy;
+  }
+}
+
+.search{
+  @extend .container;
+  margin-top: 3rem;
+  .search-form {
+    @extend .justify-content-between;
+    @extend .d-flex;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+  }
+  .form-item {
+    @extend .p-3;
+  }
+}
+
+.search-divider {
+  border-right: 1px solid #DBDBDB;
+}
+
+.btn-marketing {
+  @extend .btn-warning;
+  cursor: pointer;
+  background-color: $marketing;
+  border-color: $marketing;
+  &:hover, &:active {
+    background-color: darken($marketing, 5%);
+    border-color: darken($marketing, 5%);
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px lighten($marketing, 5%);
   }
 }
