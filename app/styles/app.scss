@@ -1,1 +1,28 @@
 @import "bootstrap";
+
+$marketing: darken(#F29490, 5%);
+$copy: #353131;
+
+.navbar-brand {
+  color: $marketing;
+}
+
+.nav-item {
+  a {
+    color: $marketing;
+  }
+}
+
+.hero {
+  @extend .container;
+  .title {
+    margin-top: 3rem;
+    font-weight: bold;
+    color: $marketing;
+  }
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: $copy;
+  }
+}
