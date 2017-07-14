@@ -27,17 +27,32 @@ $copy: #484848;
   }
 }
 
-.search{
+.search {
   @extend .container;
   margin-top: 3rem;
   .search-form {
     @extend .justify-content-between;
     @extend .d-flex;
+    @extend .align-items-center;
     border: 1px solid #DBDBDB;
     border-radius: 4px;
   }
   .form-item {
-    @extend .p-3;
+    @extend .px-3;
+    @extend .pt-2;
+    .form-group {
+      margin-bottom: 0;
+    }
+    label {
+      color: #484848;
+      margin-bottom: 0;
+    }
+    input[type="text"] {
+      padding-left: 0;
+      border: none;
+      font-size: 1.25rem;
+      color: #484848;
+    }
   }
 }
 
