@@ -10,6 +10,10 @@ export default Ember.Component.extend({
   actions: {
     hide() {
       this.set('fadeOut', true);
+    },
+    reset() {
+      this.set('selected', null);
+      document.querySelector('.sex-on input').focus();
     }
   },
 
