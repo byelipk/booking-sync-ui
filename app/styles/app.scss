@@ -177,7 +177,7 @@ nav {
 .drop-down {
   background: white;
   width: 100vw;
-  height: 35vh;
+  height: 50vh;
   top: 0;
   left: 0;
   position: absolute;
@@ -250,13 +250,13 @@ nav {
     height: 0vh;
   }
   100% {
-    height: 35vh;
+    height: 50vh;
   }
 }
 
 @keyframes go-up {
   0% {
-    height: 35vh;
+    height: 50vh;
   }
   100% {
     height: 0vh;
