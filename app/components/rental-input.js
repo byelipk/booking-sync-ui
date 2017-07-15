@@ -13,8 +13,12 @@ export default Ember.Component.extend({
     },
     reset() {
       this.set('selected', null);
-      document.querySelector('.sex-on input').focus();
+      this.focus();
     }
+  },
+
+  didInsertElement() {
+    this.focus();
   },
 
   animationEnd() {
@@ -33,5 +37,9 @@ export default Ember.Component.extend({
         width: measurements.width
       }
     };
+  },
+
+  focus() {
+    document.querySelector('.sex-on input').focus();
   }
 });
