@@ -87,7 +87,7 @@ nav {
   }
 }
 
-.btn-toggle-slide {
+.btn-toggle-dropdown {
   background: none;
   border: none;
   cursor: pointer;
@@ -111,6 +111,7 @@ nav {
   background-color: white;
   border-color: $gray;
   color: $copy;
+  box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.15) !important;
 
   &:hover, &:active {
     background-color: darken($gray, 5%);
@@ -173,7 +174,7 @@ nav {
   }
 }
 
-.slide-down {
+.drop-down {
   background: white;
   width: 100vw;
   height: 35vh;
@@ -182,8 +183,9 @@ nav {
   position: absolute;
   z-index: 1000;
   border: 1px solid $gray;
+  box-shadow: 0 0 2px 0px rgba(22, 22, 22, 0.2) !important;
 }
-.slide-down-inner {
+.drop-down-inner {
   @extend .d-flex;
   @extend .flex-column;
 
@@ -288,11 +290,11 @@ nav {
 }
 
 .go-down {
-  animation: go-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
+  animation: go-down 300ms cubic-bezier(.4,.42,.53,.91) 1;
 }
 
 .go-up {
-  animation: go-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
+  animation: go-up 300ms cubic-bezier(.4,.42,.53,.91) 1;
 }
 
 @keyframes slider-up {

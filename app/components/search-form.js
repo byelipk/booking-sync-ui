@@ -10,8 +10,8 @@ export default Ember.Component.extend({
       this.toggleProperty('popUp');
     },
 
-    slideDown() {
-      this.toggleProperty('slideDown');
+    toggleDropdown() {
+      this.toggleProperty('dropdownVisible');
     }
   },
 

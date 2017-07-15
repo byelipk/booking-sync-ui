@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['slide-down'],
+  classNames: ['drop-down'],
   classNameBindings: ['goDown', 'goUp'],
 
   goDown: true,

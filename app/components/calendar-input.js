@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['cover', 'cover-blankslate'],
+  classNames: ['cover'],
   classNameBindings: ['sliderUp', 'sliderDown'],
 
   sliderUp: true,
