@@ -1,0 +1,16 @@
+{{#power-select-typeahead
+    search=(action 'searchAsync')
+    onchange=(action (mut selected))
+    extra=(hash labelPath="name")
+    selected=selected
+    triggerClass="sex-on"
+    dropdownClass="the-beach"
+    placeholder="Anything"
+    destination=destination
+    calculatePosition=calculatePosition
+    as |rental|}}
+    <p>{{rental.name}}</p>
+    <span>${{rental.dailyRate}}</span>
+    <span>&middot;</span>
+    <span>{{rental.availability}}</span>
+{{/power-select-typeahead}}

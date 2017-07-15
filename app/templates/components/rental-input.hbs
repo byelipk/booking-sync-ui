@@ -1,0 +1,16 @@
+<header class="d-flex justify-content-between p-3">
+  <button {{action "hide"}} type="button" name="button">Hide</button>
+  <span>What</span>
+  <button {{action "hide"}} type="button" name="button">Reset</button>
+</header>
+
+<section class="d-flex justify-content-center">
+  <div class="p-3 w-100">
+    {{type-ahead
+      destination="destination"
+      calculatePosition=calculatePosition}}
+
+    {{!-- Results go here --}}
+    <div id="destination"></div>
+  </div>
+</section>
