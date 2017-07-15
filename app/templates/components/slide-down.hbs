@@ -1,9 +1,15 @@
-<header class="d-flex justify-content-between p-3">
-  <button {{action "hide"}} type="button" name="button">Hide</button>
-</header>
+<div class="slide-down-inner">
+  <header class="d-flex justify-content-between p-3">
+     <button {{action "hide"}} type="button" class="btn-naked">
+       <svg viewBox="0 0 18 18" role="img" aria-label="Close" focusable="false" style="display: block; fill: rgb(72, 72, 72); height: 16px; width: 16px;"><path fill-rule="evenodd" d="M1.705 13.705A1 1 0 1 1 .29 12.29l8-7.995a1 1 0 0 1 1.414 0l8 7.995a1 1 0 1 1-1.414 1.415l-7.293-7.29-7.293 7.29z"></path></svg>
+     </button>
+     <button {{action "hide"}} type="button" class="btn-naked">Clear All</button>
+  </header>
 
-<section class="d-flex flex-column w-100 p-3 justify-content-start">
-  <button {{action 'what'}} type="button" class="mb-1 text-left">What</button>
-  <button {{action 'when'}} type="button" class="mb-1 text-left">When</button>
-  <button {{action 'howMuch'}} type="button" class="mb-1 text-left">How much</button>
-</section>
+  <section class="d-flex flex-column w-100 p-3 justify-content-start">
+    <button {{action 'what'}} type="button" class="mb-1 text-left">What</button>
+    <button {{action 'when'}} type="button" class="mb-1 text-left">When</button>
+    <button {{action 'howMuch'}} type="button" class="mb-1 text-left">How much</button>
+  </section>
+
+</div>
