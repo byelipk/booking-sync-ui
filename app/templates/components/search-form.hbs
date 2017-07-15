@@ -1,0 +1,37 @@
+<div class="search-form">
+  <div class="form-item search-divider w-75">
+    <div class="form-group">
+       <label for="what">What</label>
+      {{#power-select-typeahead
+          search=(action 'searchAsync')
+          onchange=(action (mut selected))
+          extra=(hash labelPath="name")
+          selected=selected
+          triggerClass="sex-on"
+          dropdownClass="the-beach"
+          placeholder="Anything"
+          calculatePosition=calculatePosition
+          as |rental|}}
+          <p>{{rental.name}}</p>
+          <span>${{rental.dailyRate}}</span>
+          <span>&middot;</span>
+          <span>{{rental.availability}}</span>
+      {{/power-select-typeahead}}
+    </div>
+  </div>
+  <div class="form-item search-divider w-75">
+    <div class="form-group">
+      <label for="when">When</label>
+      <input type="text" class="form-control" id="when" aria-describedby="When" placeholder="Anytime">
+    </div>
+  </div>
+  <div class="form-item w-50">
+    <div class="form-group">
+      <label for="when">How much</label>
+      <input type="text" class="form-control" id="how-much" aria-describedby="HowMuch" placeholder="Any price">
+    </div>
+  </div>
+  <div class="form-item w-0">
+    <input type="submit" class="btn btn-marketing btn-lg" value="Search">
+  </div>
+</div>

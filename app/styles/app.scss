@@ -1,13 +1,12 @@
 @import "bootstrap";
 
+@import 'ember-power-select';
+@import 'ember-power-select-typeahead';
+
 $marketing: darken(#F29490, 10%);
 $copy: #484848;
 
-.navbar-brand {
-  color: $marketing;
-}
-
-.nav-item {
+nav {
   a {
     color: $marketing;
   }
@@ -28,30 +27,40 @@ $copy: #484848;
 }
 
 .search {
-  @extend .container;
   margin-top: 3rem;
+
+  @extend .container;
+
   .search-form {
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+
     @extend .justify-content-between;
     @extend .d-flex;
     @extend .align-items-center;
-    border: 1px solid #DBDBDB;
-    border-radius: 4px;
   }
+
   .form-item {
     @extend .px-3;
     @extend .pt-2;
+
     .form-group {
       margin-bottom: 0;
     }
+
     label {
       color: #484848;
       margin-bottom: 0;
     }
-    input[type="text"] {
+
+    input[type="text"], input[type="search"] {
       padding-left: 0;
       border: none;
       font-size: 1.25rem;
       color: #484848;
+      &:focus {
+        border: none;
+      }
     }
   }
 }
@@ -61,15 +70,45 @@ $copy: #484848;
 }
 
 .btn-marketing {
-  @extend .btn-warning;
   cursor: pointer;
   background-color: $marketing;
   border-color: $marketing;
+
+  @extend .btn-warning;
+
   &:hover, &:active {
     background-color: darken($marketing, 5%);
     border-color: darken($marketing, 5%);
   }
+
   &:focus {
     box-shadow: 0 0 0 2px lighten($marketing, 5%);
+  }
+}
+
+// Typeahead
+.sex-on {
+  min-height: 2.55em;
+}
+
+.the-beach {
+  border: 1px solid #DBDBDB;
+
+  .ember-power-select-option {
+    padding: .5rem;
+    p {
+      margin-bottom: 0;
+      font-weight: normal;
+      font-size: 1.15rem;
+      color: $copy;
+    }
+    span {
+      font-weight: lighter;
+      color: lighten($copy, 25%);
+    }
+  }
+
+  .ember-power-select-option[aria-current="true"] {
+    background-color: #CCEEEB;
   }
 }
