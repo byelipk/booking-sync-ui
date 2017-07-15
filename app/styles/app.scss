@@ -209,6 +209,8 @@ nav {
   height: 100vh;
   width: 100vw;
   position: absolute;
+  bottom: 0;
+  left: 0;
   z-index: 2000;
 }
 .cover {
@@ -238,24 +240,6 @@ nav {
 .destination {
   ul {
     min-height: 20rem;
-  }
-}
-
-@keyframes slide-up {
-  0% {
-    height: 0vh;
-  }
-  100% {
-    height: 100vh;
-  }
-}
-
-@keyframes slide-down {
-  0% {
-    height: 100vh;
-  }
-  100% {
-    height: 0vh;
   }
 }
 
@@ -311,10 +295,28 @@ nav {
   animation: go-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
 }
 
-// .slide-down {
-//   animation: slide-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
-// }
-//
-// .slide-up {
-//   animation: slide-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
-// }
+@keyframes slider-up {
+  0% {
+    height: 0vh;
+  }
+  100% {
+    height: 100vh;
+  }
+}
+
+@keyframes slider-down {
+  0% {
+    height: 100vh;
+  }
+  100% {
+    height: 0vh;
+  }
+}
+
+.slider-up {
+  animation: slider-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}
+
+.slider-down {
+  animation: slider-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}

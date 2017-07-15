@@ -2,19 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['cover', 'cover-blankslate'],
-  classNameBindings: ['fadeIn', 'fadeOut'],
+  classNameBindings: ['sliderUp', 'sliderDown'],
 
-  fadeIn: true,
-  fadeOut: false,
+  sliderUp: true,
+  sliderDown: false,
 
   actions: {
     hide() {
-      this.set('fadeOut', true);
+      this.set('sliderDown', true);
     }
   },
 
   animationEnd() {
-    if (this.get('fadeOut')) {
+    if (this.get('sliderDown')) {
       this.get('hide')();
     }
   },
