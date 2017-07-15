@@ -182,6 +182,11 @@ nav {
     border-bottom-right-radius: 0;
   }
 }
+.cover-inner {
+  @extend .d-flex;
+  @extend .flex-column;
+  height: 100vh;
+}
 .cover-blankslate {
   background-color: purple;
 }
