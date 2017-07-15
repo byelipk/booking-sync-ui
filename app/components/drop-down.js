@@ -26,5 +26,16 @@ export default Ember.Component.extend({
     if (this.get('goUp')) {
       this.get('hide')();
     }
-  }
+  },
+
+  rentalName: Ember.computed('rental', function() {
+    const rental = this.get('rental');
+
+    if (rental && rental.name) {
+      return rental.name;
+    }
+    else {
+      return "Anything";
+    }
+  })
 });

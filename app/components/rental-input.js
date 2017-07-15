@@ -12,8 +12,11 @@ export default Ember.Component.extend({
       this.set('fadeOut', true);
     },
     reset() {
-      this.set('selected', null);
+      this.set('rental', null);
       this.focus();
+    },
+    save() {
+      this.set('fadeOut', true);
     }
   },
 
@@ -23,7 +26,7 @@ export default Ember.Component.extend({
 
   animationEnd() {
     if (this.get('fadeOut')) {
-      this.get('hide')();
+      this.get('hide')(this.get('rental'));
     }
   },
 
