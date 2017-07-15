@@ -5,6 +5,7 @@
 
 $marketing: darken(#F29490, 10%);
 $copy: #484848;
+$gray: #DBDBDB;
 
 nav {
   a {
@@ -20,7 +21,7 @@ nav {
     color: $marketing;
   }
   .subtitle {
-    font-size: 2.5rem;
+    font-size: 1.25rem;
     font-weight: 300;
     color: $copy;
   }
@@ -32,7 +33,7 @@ nav {
   @extend .container;
 
   .search-form {
-    border: 1px solid #DBDBDB;
+    border: 1px solid $gray;
     border-radius: 4px;
 
     @extend .justify-content-between;
@@ -66,7 +67,7 @@ nav {
 }
 
 .search-divider {
-  border-right: 1px solid #DBDBDB;
+  border-right: 1px solid $gray;
 }
 
 .btn-marketing {
@@ -86,13 +87,47 @@ nav {
   }
 }
 
+.btn-toggle-slide {
+  background: none;
+  border: none;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  svg {
+    display: inline-block;
+    fill: currentcolor;
+    height: 18px;
+    width: 18px;
+    padding-top: 5px;
+  }
+}
+
+.popup-toggle {
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+  svg {
+    display: inline-block;
+    fill: currentcolor;
+    height: 18px;
+    width: 18px;
+    padding-top: 5px;
+  }
+}
+
 // Typeahead
 .sex-on {
   min-height: 2.55em;
 }
 
 .the-beach {
-  border: 1px solid #DBDBDB;
+  border: 1px solid $gray;
 
   .ember-power-select-option {
     padding: .5rem;
@@ -113,12 +148,83 @@ nav {
   }
 }
 
+.slide-down {
+  background: white;
+  width: 100vw;
+  height: 35vh;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1000;
+  border: 1px solid $gray;
+}
+
 .cover {
   background: white;
   height: 100vh;
   width: 100vw;
   position: absolute;
-  z-index: 1000;
+  z-index: 2000;
+}
+.cover {
+  input {
+    border: 1px solid $gray;
+    border-radius: 4px;
+  }
+  div[aria-expanded="true"] > input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+.cover-blankslate {
+  background-color: purple;
+}
+
+.destination > div {
+  border-top: 2px solid purple;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.destination {
+  ul {
+    min-height: 20rem;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    height: 0vh;
+  }
+  100% {
+    height: 100vh;
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    height: 100vh;
+  }
+  100% {
+    height: 0vh;
+  }
+}
+
+@keyframes go-down {
+  0% {
+    height: 0vh;
+  }
+  100% {
+    height: 35vh;
+  }
+}
+
+@keyframes go-up {
+  0% {
+    height: 35vh;
+  }
+  100% {
+    height: 0vh;
+  }
 }
 
 @keyframes fade-in {
@@ -146,3 +252,19 @@ nav {
 .fade-out {
   animation: fade-out 200ms cubic-bezier(.4,.42,.53,.91) 1;
 }
+
+.go-down {
+  animation: go-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}
+
+.go-up {
+  animation: go-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}
+
+// .slide-down {
+//   animation: slide-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
+// }
+//
+// .slide-up {
+//   animation: slide-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
+// }

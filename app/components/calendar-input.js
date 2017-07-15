@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['cover'],
+  classNames: ['cover', 'cover-blankslate'],
   classNameBindings: ['fadeIn', 'fadeOut'],
 
   fadeIn: true,
@@ -18,16 +18,4 @@ export default Ember.Component.extend({
       this.get('hide')();
     }
   },
-
-  calculatePosition(trigger, content) {
-    const measurements = trigger.getBoundingClientRect();
-
-    return {
-      style: {
-        left: measurements.left,
-        top: measurements.top + measurements.height,
-        width: measurements.width
-      }
-    };
-  }
 });

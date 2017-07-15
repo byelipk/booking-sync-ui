@@ -5,9 +5,13 @@ export default Ember.Component.extend({
   classNames: ['search'],
 
   actions: {
-    showPopup(type) {
-      this.set('smallScreenPopup', type);
-      this.toggleProperty('show');
+    popUp(component) {
+      this.set('smallScreenPopup', component);
+      this.toggleProperty('popUp');
+    },
+
+    slideDown() {
+      this.toggleProperty('slideDown');
     }
   },
 
