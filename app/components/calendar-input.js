@@ -10,12 +10,18 @@ export default Ember.Component.extend({
   actions: {
     hide() {
       this.set('sliderDown', true);
+    },
+    reset() {
+      // Reset internal state
+    },
+    save() {
+      this.set('sliderDown', true);
     }
   },
 
   animationEnd() {
     if (this.get('sliderDown')) {
-      this.get('hide')();
+      this.get('hide')(this.get('rental'));
     }
-  },
+  }
 });
