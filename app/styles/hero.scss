@@ -1,6 +1,9 @@
+@import "variables";
+
 .hero {
   @extend .container;
   .title {
+    font-size: 1.75rem;
     margin-top: 3rem;
     font-weight: bold;
     color: $marketing;
@@ -14,6 +17,9 @@
 
 @include media-breakpoint-up(sm) {
   .hero {
+    .title {
+      font-size: 2rem;
+    }
     .subtitle {
       font-size: 1.5rem;
     }
@@ -22,6 +28,9 @@
 
 @include media-breakpoint-up(md) {
   .hero {
+    .title {
+      font-size: 2.25rem;
+    }
     .subtitle {
       font-size: 2rem;
     }
