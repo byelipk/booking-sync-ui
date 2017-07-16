@@ -73,3 +73,16 @@
     font-weight: normal;
   }
 }
+
+/**
+  * iPhone 6, 6s, 7
+  */
+@media all and (device-width: 375px) and (device-height: 667px) {
+  .calendar-lg {
+    @include ember-power-calendar($cell-size: 40px);
+  }
+
+  .calendar-md {
+    @include ember-power-calendar($cell-size: 25px);
+  }
+}
