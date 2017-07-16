@@ -37,14 +37,14 @@
     </div>
   </div>
 
-  <div class="form-item search-divider w-75 hidden-sm-down">
+  <div id="date-picker" class="form-item search-divider w-75 hidden-sm-down">
     <div class="form-group hidden-lg-up modal-toggle">
       <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false"><path d="M22 9.5V3h-4.75V1a.75.75 0 1 0-1.5 0v2H8.249l.001-2a.75.75 0 1 0-1.5 0l-.001 2H2v19.008a1 1 0 0 0 .992.992h18.016a1 1 0 0 0 .992-.992V9.5zm-18.5-5h3.248V5a.75.75 0 0 0 1.5 0v-.5h7.502V5a.75.75 0 0 0 1.5 0v-.5h3.25V8h-17V4.5zm0 17v-12h17v12h-17z" fill-rule="evenodd"></path></svg>
       <button {{action 'showModal' 'calendar-input'}} type="button">When</button>
     </div>
     <div class="form-group hidden-md-down">
       <label for="when">When</label>
-      <input type="text" class="form-control" id="when" aria-describedby="When" placeholder="Anytime">
+      {{date-picker}}
     </div>
   </div>
 

@@ -2217,7 +2217,7 @@ ember-cli-lodash-subset@^1.0.11, ember-cli-lodash-subset@^1.0.7:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/ember-cli-lodash-subset/-/ember-cli-lodash-subset-1.0.12.tgz#af2e77eba5dcb0d77f3308d3a6fd7d3450f6e537"
 
-ember-cli-moment-shim@^3.1.0:
+ember-cli-moment-shim@^3.1.0, ember-cli-moment-shim@^3.3.3:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/ember-cli-moment-shim/-/ember-cli-moment-shim-3.3.3.tgz#f0609c6ff606287c3eeee717163310331e0e9397"
   dependencies:
@@ -2524,7 +2524,7 @@ ember-maybe-import-regenerator@^0.1.5:
     ember-cli-babel "^6.0.0-beta.4"
     regenerator-runtime "^0.9.5"
 
-ember-moment@^7.3.0:
+ember-moment@^7.3.0, ember-moment@^7.3.1:
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/ember-moment/-/ember-moment-7.3.1.tgz#20cf679f4a10abd839633afead1dd816963bf3d2"
   dependencies:
