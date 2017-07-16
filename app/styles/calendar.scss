@@ -27,7 +27,6 @@
   }
 
   .ember-power-calendar-nav-title {
-    // margin-top: 1rem;
     font-weight: bold;
     font-size: 1.25rem;
   }
@@ -48,6 +47,29 @@
   }
 
   .ember-power-calendar-day--selected {
-    background-color: darken(white, 20%);
+    background-color: #B2F1EC;
+    color: #007A87;
+    font-weight: normal;
+  }
+
+  .ember-power-calendar-day--selected:not([disabled]):hover {
+    background-color: #B2F1EC;
+    color: white;
+    font-weight: normal;
+  }
+
+  .ember-power-calendar-day--selected.ember-power-calendar-day--range-start {
+    background-color: #00A699;
+    color: white;
+    font-weight: normal;
+    &:hover {
+      background-color: #00A699;
+    }
+  }
+
+  .ember-power-calendar-day--selected.ember-power-calendar-day--range-end {
+    background-color: #00A699;
+    color: white;
+    font-weight: normal;
   }
 }
