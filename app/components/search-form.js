@@ -47,9 +47,13 @@ export default Ember.Component.extend({
     }
   },
 
-  submitTask: task(function * () {
-    yield timeout(1000);
-    alert("NICE");
+  submitTask: task(function * (booking) {
+    try {
+      yield booking.save();
+      alert("Your trip is booked! 😎");
+    } catch (e) {
+      e.errors.forEach(error => alert(error.detail + ' 😕'));
+    }
   }).drop(),
 
   _validate(rental, range) {
@@ -63,8 +67,8 @@ export default Ember.Component.extend({
 
   _createBooking(rental, range) {
     return this.get('store').createRecord('booking', {
-      startAt: range.start,
-      endAt: range.end,
+      startAt: range.start.toDate(),
+      endAt: range.end.toDate(),
       price: Number.parseFloat(this.get('rentalCost')),
       clientEmail: 'me@email.com',
       rental: rental
