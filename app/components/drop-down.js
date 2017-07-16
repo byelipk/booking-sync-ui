@@ -31,8 +31,8 @@ export default Ember.Component.extend({
   rentalName: Ember.computed('rental', function() {
     const rental = this.get('rental');
 
-    if (rental && rental.name) {
-      return rental.name;
+    if (rental && rental.get('name')) {
+      return rental.get('name');
     }
     else {
       return "Anything";
