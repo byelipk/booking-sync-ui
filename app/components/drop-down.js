@@ -62,11 +62,11 @@ export default Ember.Component.extend({
         !range.start ||
         !range.end   ||
         !rental      ||
-        !rental.dailyRate) { return ''; }
+        !rental.get('dailyRate')) { return ''; }
 
     const daysInRange = range.end.diff(range.start, 'days');
-    const dailyPrice  = Number.parseFloat(rental.dailyRate);
+    const dailyPrice  = Number.parseFloat(rental.get('dailyRate'));
 
-    return `${daysInRange * dailyPrice}`;
-  }),
+    return daysInRange * dailyPrice;
+  })
 });
