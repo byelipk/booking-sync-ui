@@ -37,9 +37,10 @@ export default Ember.Component.extend({
 
     const rental  = this.get('rental');
     const range   = this.get('range');
+    const email   = window.prompt("What is your email?");
 
-    if (this._validate(rental, range)) {
-      const booking = this._createBooking(rental, range);
+    if (this._validate(rental, range, email)) {
+      const booking = this._createBooking(rental, range, email);
       this.get('submitTask').perform(booking);
     }
     else {
@@ -51,26 +52,33 @@ export default Ember.Component.extend({
     try {
       yield booking.save();
       alert("Your trip is booked! 😎");
+      this.set('rental', null);
+      this.set('range', null);
     } catch (e) {
       e.errors.forEach(error => alert(error.detail + ' 😕'));
     }
   }).drop(),
 
-  _validate(rental, range) {
+  _validate(rental, range, email) {
     if (rental && range && range.start && range.end) {
-      return true;
+      if (!email.match(/@/)) {
+        return false;
+      }
+      else {
+        return true;
+      }
     }
     else {
       return false;
     }
   },
 
-  _createBooking(rental, range) {
+  _createBooking(rental, range, email) {
     return this.get('store').createRecord('booking', {
       startAt: range.start.toDate(),
       endAt: range.end.toDate(),
       price: Number.parseFloat(this.get('rentalCost')),
-      clientEmail: 'me@email.com',
+      clientEmail: email,
       rental: rental
     });
   },
@@ -82,8 +90,8 @@ export default Ember.Component.extend({
   rentalName: Ember.computed('rental', function() {
     const rental = this.get('rental');
 
-    if (rental && rental.name) {
-      return rental.name;
+    if (rental && rental.get('name')) {
+      return rental.get('name');
     }
     else {
       return '';
