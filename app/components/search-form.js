@@ -48,10 +48,12 @@ export default Ember.Component.extend({
 
     if (!range || !range.start || !range.end) { return ''; }
 
-    const start = range.start.format("MMM DD");
-    const end = range.end.format("MMM DD");
-
-    return `${start} - ${end}`;
+    if (range.start.month() === range.end.month()) {
+      return `${range.start.format("MMM DD")} - ${range.end.format("DD")}`;
+    }
+    else {
+      return `${range.start.format("MMM DD")} - ${range.end.format("MMM DD")}`;
+    }
   }),
 
   rentalCost: Ember.computed('rental', 'range', function() {
@@ -77,7 +79,12 @@ export default Ember.Component.extend({
       return 'Anything';
     }
     else {
-      return rentalName;
+      if (rentalName.length > 10) {
+        return rentalName.substr(0, 10) + `...`;
+      }
+      else {
+        return rentalName;
+      }
     }
   }),
 
@@ -89,17 +96,6 @@ export default Ember.Component.extend({
     }
     else {
       return dateRange;
-    }
-  }),
-
-  rentalCostString: Ember.computed('rentalCost', function() {
-    const rentalCost = this.get('rentalCost');
-
-    if (!rentalCost) {
-      return 'Any price';
-    }
-    else {
-      return rentalCost;
     }
   })
 });

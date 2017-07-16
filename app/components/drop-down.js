@@ -46,9 +46,27 @@ export default Ember.Component.extend({
       return 'Anytime';
     }
 
-    const start = range.start.format("MMM DD");
-    const end = range.end.format("MMM DD");
+    if (range.start.month() === range.end.month()) {
+      return `${range.start.format("MMM DD")} - ${range.end.format("DD")}`;
+    }
+    else {
+      return `${range.start.format("MMM DD")} - ${range.end.format("MMM DD")}`;
+    }
+  }),
 
-    return `${start} - ${end}`;
-  })
+  rentalCost: Ember.computed('rental', 'range', function() {
+    const rental = this.get('rental');
+    const range = this.get('range');
+
+    if (!range       ||
+        !range.start ||
+        !range.end   ||
+        !rental      ||
+        !rental.dailyRate) { return ''; }
+
+    const daysInRange = range.end.diff(range.start, 'days');
+    const dailyPrice  = Number.parseFloat(rental.dailyRate);
+
+    return `${daysInRange * dailyPrice}`;
+  }),
 });
