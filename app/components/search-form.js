@@ -15,10 +15,11 @@ export default Ember.Component.extend({
 
     // This action is invoked when a modal is hidden. It may
     // be passed a rental object.
-    hideModal(rental) {
+    hideModal(rental, range) {
       this.set('modalWindow', null);
       this.set('modalVisible', false);
       this.set('rental', rental);
+      this.set('range', range);
     },
 
     // This action is invoked when the navigation bar

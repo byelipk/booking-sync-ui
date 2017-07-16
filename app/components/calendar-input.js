@@ -12,7 +12,7 @@ export default Ember.Component.extend({
       this.set('sliderDown', true);
     },
     reset() {
-      // Reset internal state
+      this.set('range', null);
     },
     save() {
       this.set('sliderDown', true);
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
   animationEnd() {
     if (this.get('sliderDown')) {
-      this.get('hide')(this.get('rental'));
+      this.get('hide')(this.get('rental'), this.get('range'));
     }
   },
 

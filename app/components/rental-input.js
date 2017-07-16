@@ -26,7 +26,7 @@ export default Ember.Component.extend({
 
   animationEnd() {
     if (this.get('fadeOut')) {
-      this.get('hide')(this.get('rental'));
+      this.get('hide')(this.get('rental'), this.get('range'));
     }
   },
 
