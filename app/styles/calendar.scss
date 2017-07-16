@@ -1,0 +1,53 @@
+// The calendar
+.calendar-lg {
+  @include ember-power-calendar($cell-size: 50px);
+}
+
+.calendar-md {
+  @include ember-power-calendar($cell-size: 35px);
+}
+
+.calendar {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.07);
+
+  .ember-power-calendar-nav {
+    button {
+      border: 1px solid $gray;
+      margin: .25rem;
+      border-radius: 4px;
+      &:focus {
+        outline: none;
+      }
+      svg {
+        height: 19px;
+        width: 19px;
+        fill: darken($gray, 15%);
+      }
+    }
+  }
+
+  .ember-power-calendar-nav-title {
+    // margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  .ember-power-calendar-week {
+    color: #757575;
+    padding: 0;
+    border: none;
+    margin: 0;
+  }
+
+  .ember-power-calendar-weekdays {
+    color: #757575;
+  }
+
+  .ember-power-calendar-day--current-month {
+    background-color: white;
+  }
+
+  .ember-power-calendar-day--selected {
+    background-color: darken(white, 20%);
+  }
+}
