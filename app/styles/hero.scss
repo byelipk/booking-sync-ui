@@ -1,0 +1,37 @@
+.hero {
+  @extend .container;
+  .title {
+    margin-top: 3rem;
+    font-weight: bold;
+    color: $marketing;
+  }
+  .subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: $copy;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .hero {
+    .subtitle {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .hero {
+    .subtitle {
+      font-size: 2rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .hero {
+    .subtitle {
+      font-size: 2.5rem;
+    }
+  }
+}

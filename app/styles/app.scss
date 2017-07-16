@@ -8,24 +8,14 @@
 
 @import 'calendar';
 @import 'cover';
+@import 'hero';
 
 nav {
   a {
-    color: $marketing;
-  }
-}
-
-.hero {
-  @extend .container;
-  .title {
-    margin-top: 3rem;
-    font-weight: bold;
-    color: $marketing;
-  }
-  .subtitle {
-    font-size: 1.25rem;
-    font-weight: 300;
     color: $copy;
+  }
+  a.navbar-brand {
+    color: $marketing;
   }
 }
 
