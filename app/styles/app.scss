@@ -200,6 +200,10 @@ nav {
   }
 }
 
+.horizontal-scroll {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
 
 
 .destination > div {
