@@ -5,7 +5,7 @@ export function currency(params/*, hash*/) {
   let sign   = params[1];
 
   if (amount) {
-    return `${sign}${amount}`;
+    return `${sign}${parseInt(amount, 10)}`;
   }
   else {
     return `${sign} Any price`;
