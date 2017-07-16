@@ -40,5 +40,18 @@ export default Ember.Component.extend({
     else {
       return "Anything";
     }
+  }),
+
+  dateRange: Ember.computed('range', function() {
+    const range = this.get('range');
+
+    if (!range || !range.start || !range.end) {
+      return 'Anytime';
+    }
+
+    const start = range.start.format("MMM DD");
+    const end = range.end.format("MMM DD");
+
+    return `${start} - ${end}`;
   })
 });

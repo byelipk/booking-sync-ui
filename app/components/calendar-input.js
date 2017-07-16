@@ -23,5 +23,8 @@ export default Ember.Component.extend({
     if (this.get('sliderDown')) {
       this.get('hide')(this.get('rental'));
     }
-  }
+  },
+
+  yesterday: moment().add(-1, 'days'),
+
 });

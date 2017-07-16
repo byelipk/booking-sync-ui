@@ -19,7 +19,7 @@ export default Ember.Component.extend({
 
   yesterday: moment().add(-1, 'days'),
 
-  formattedRange: Ember.computed('range', function() {
+  dateRange: Ember.computed('range', function() {
     const range = this.get('range');
 
     if (!range || !range.start || !range.end) {
