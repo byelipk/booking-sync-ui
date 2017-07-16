@@ -11,10 +11,10 @@
     <div class="p-3 w-100 text-center">
       {{#power-calendar-range
           center=center
-          selected=largeRange
+          selected=range
           class="calendar calendar-lg mx-auto"
           onCenterChange=(action (mut center) value="date")
-          onSelect=(action (mut largeRange) value="moment") as |cal|}}
+          onSelect=(action (mut range) value="moment") as |cal|}}
 
           {{!-- Calendar navigation --}}
           <nav class="ember-power-calendar-nav py-3">
