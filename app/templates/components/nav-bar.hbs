@@ -1,10 +1,8 @@
 <nav class="navbar flex-row flex-nowrap">
   {{#link-to "index" class="navbar-brand"}}LOGO{{/link-to}}
   <div class="d-flex w-100">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        {{yield}}
-      </li>
+    <ul class="navbar-nav flex-row ml-auto">
+      {{yield}}
     </ul>
   </div>
 </nav>
