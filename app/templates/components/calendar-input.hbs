@@ -29,7 +29,10 @@
             </button>
           </nav>
 
-          {{cal.days showDaysAround=false weekdayFormat="min" minDate=yesterday}}
+          {{cal.days
+            showDaysAround=false
+            weekdayFormat="min"
+            minDate=today}}
         {{/power-calendar-range}}
     </div>
   </section>
