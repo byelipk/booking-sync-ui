@@ -1,5 +1,5 @@
 {{#power-select-typeahead
-    search=(action 'searchAsync')
+    search=(perform searchTask)
     onchange=(action (mut selected))
     extra=(hash labelPath="name")
     selected=selected
@@ -11,6 +11,4 @@
     as |rental|}}
     <p>{{rental.name}}</p>
     <span>${{rental.dailyRate}}</span>
-    <span>&middot;</span>
-    <span>{{rental.availability}}</span>
 {{/power-select-typeahead}}

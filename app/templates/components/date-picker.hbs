@@ -1,6 +1,12 @@
 {{#basic-dropdown calculatePosition=calculatePosition as |dropdown|}}
   {{#dropdown.trigger}}
-    <input type="text" class="form-control" id="when" aria-describedby="When" placeholder="Anytime" value={{dateRange}}>
+    <input type="text"
+           class="form-control"
+           id="when"
+           aria-describedby="When"
+           placeholder="Anytime"
+           value={{dateRange}}
+           autocomplete="off">
   {{/dropdown.trigger}}
   {{#dropdown.content}}
   {{#power-calendar-range

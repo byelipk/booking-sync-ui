@@ -1,17 +1,17 @@
 import Ember from 'ember';
+import { task, timeout } from 'ember-concurrency';
 
 export default Ember.Component.extend({
-  actions: {
-    searchAsync() {
-      return [
-        {name: "Car", dailyRate: "150.00", availability: "Anytime"},
-        {name: "Vacation on an island", dailyRate: "2375.00", availability: "Anytime"},
-        {name: "Bike Ride", dailyRate: "47.00", availability: "Anytime"},
-        {name: "Baseball Game", dailyRate: "329.00", availability: "Anytime"},
-        {name: "Sleep Over", dailyRate: "99.00", availability: "Anytime"},
-      ];
-    }
-  },
+  ajax: Ember.inject.service(),
+  store: Ember.inject.service(),
+
+  searchTask: task(function * (term) {
+    yield timeout(250);
+
+    return yield this.get('store').query('rental', {
+      query: encodeURIComponent(term)
+    });
+  }).restartable(),
 
   calculatePosition() {
     const target = document.querySelector('.search');

@@ -1,9 +1,12 @@
 import Ember from 'ember';
 import moment from 'moment';
+import { task, timeout } from 'ember-concurrency';
 
 export default Ember.Component.extend({
   tagName: 'form',
   classNames: ['search'],
+
+  store: Ember.inject.service(),
 
   actions: {
 
@@ -27,6 +30,45 @@ export default Ember.Component.extend({
     toggleDropdown(rental) {
       this.toggleProperty('dropdownVisible');
     }
+  },
+
+  submit(evt) {
+    evt.preventDefault();
+
+    const rental  = this.get('rental');
+    const range   = this.get('range');
+
+    if (this._validate(rental, range)) {
+      const booking = this._createBooking(rental, range);
+      this.get('submitTask').perform(booking);
+    }
+    else {
+      alert("Something went wrong validating the booking. 😦");
+    }
+  },
+
+  submitTask: task(function * () {
+    yield timeout(1000);
+    alert("NICE");
+  }).drop(),
+
+  _validate(rental, range) {
+    if (rental && range && range.start && range.end) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  },
+
+  _createBooking(rental, range) {
+    return this.get('store').createRecord('booking', {
+      startAt: range.start,
+      endAt: range.end,
+      price: Number.parseFloat(this.get('rentalCost')),
+      clientEmail: 'me@email.com',
+      rental: rental
+    });
   },
 
   // This property tracks the type of component
