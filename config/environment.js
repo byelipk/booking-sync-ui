@@ -21,13 +21,13 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      customEvents: {
-        transitionend: 'transitionEnd',
-        animationend: 'animationEnd',
-        animationstart: 'animationStart',
-        animationiteration: 'animationIteration',
-        animationcancel: 'animationCancel'
-      }
+      // customEvents: {
+      //   transitionend: 'transitionEnd',
+      //   animationend: 'animationEnd',
+      //   animationstart: 'animationStart',
+      //   animationiteration: 'animationIteration',
+      //   animationcancel: 'animationCancel'
+      // }
     }
   };
 
