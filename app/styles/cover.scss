@@ -4,11 +4,10 @@
   background: white;
   height: 100vh;
   width: 100vw;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   z-index: 2000;
-  overflow-y: hidden;
 
   input {
     border: 1px solid $gray;
@@ -26,8 +25,8 @@
   height: 100vh;
 }
 
-.cover-blankslate {
-  background-color: purple;
+.overflow-wrapper.no-scroll {
+  overflow-y: hidden;
 }
 
 /**

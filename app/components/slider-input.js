@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import TransitionMixin from 'ember-css-transitions/mixins/transition-mixin';
+import NotScrollable from '../mixins/not-scrollable';
 
-export default Ember.Component.extend(TransitionMixin, {
+export default Ember.Component.extend(TransitionMixin, NotScrollable, {
   transitionClass: 'slide-from-bottom',
   classNames: ['cover'],
 
