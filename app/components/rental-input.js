@@ -1,34 +1,26 @@
 import Ember from 'ember';
+import TransitionMixin from 'ember-css-transitions/mixins/transition-mixin';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(TransitionMixin, {
+  transitionClass: 'slide-from-bottom',
   classNames: ['cover'],
-  classNameBindings: ['fadeIn', 'fadeOut'],
-
-  fadeIn: true,
-  fadeOut: false,
 
   actions: {
     hide() {
-      this.set('fadeOut', true);
+      this.get('hide')(this.get('rental'), this.get('range'));
     },
     reset() {
       this.set('rental', null);
       this.focus();
     },
     save() {
-      this.set('fadeOut', true);
-    }
-  },
-
-  didInsertElement() {
-    this.focus();
-  },
-
-  animationEnd() {
-    if (this.get('fadeOut')) {
       this.get('hide')(this.get('rental'), this.get('range'));
     }
   },
+
+  focusOnInsert: Ember.on('didInsertElement', function() {
+    this.focus();
+  }),
 
   calculatePosition(trigger, content) {
     const measurements = trigger.getBoundingClientRect();

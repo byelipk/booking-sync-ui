@@ -1,31 +1,23 @@
 import Ember from 'ember';
+import moment from 'moment';
+import TransitionMixin from 'ember-css-transitions/mixins/transition-mixin';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(TransitionMixin, {
+  transitionClass: 'slide-from-bottom',
   classNames: ['cover'],
-  classNameBindings: ['sliderUp', 'sliderDown'],
-
-  sliderUp: true,
-  sliderDown: false,
 
   actions: {
     hide() {
-      this.set('sliderDown', true);
+      this.get('hide')(this.get('rental'), this.get('range'));
     },
     reset() {
       this.set('range', null);
     },
     save() {
-      this.set('sliderDown', true);
-    }
-  },
-
-  animationEnd() {
-    if (this.get('sliderDown')) {
       this.get('hide')(this.get('rental'), this.get('range'));
     }
   },
 
   today: moment(),
   yesterday: moment().add(-1, 'days'),
-
 });

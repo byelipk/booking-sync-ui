@@ -1,26 +1,18 @@
 import Ember from 'ember';
+import TransitionMixin from 'ember-css-transitions/mixins/transition-mixin';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(TransitionMixin, {
+  transitionClass: 'slide-from-bottom',
   classNames: ['cover'],
-  classNameBindings: ['sliderUp', 'sliderDown'],
-
-  sliderUp: true,
-  sliderDown: false,
 
   actions: {
     hide() {
-      this.set('sliderDown', true);
+      this.get('hide')(this.get('rental'), this.get('range'));
     },
     reset() {
       // Reset internal state
     },
     save() {
-      this.set('sliderDown', true);
-    }
-  },
-
-  animationEnd() {
-    if (this.get('sliderDown')) {
       this.get('hide')(this.get('rental'), this.get('range'));
     }
   }
