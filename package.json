@@ -45,6 +45,7 @@
     "ember-power-select-typeahead": "^0.5.8",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.14.0",
+    "ember-utc-transform": "^0.0.8",
     "loader.js": "^4.2.3"
   },
   "engines": {

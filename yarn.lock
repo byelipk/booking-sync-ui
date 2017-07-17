@@ -2127,7 +2127,7 @@ ember-cli-autoprefixer@^0.7.0:
     broccoli-autoprefixer "^4.1.0"
     lodash "^4.0.0"
 
-ember-cli-babel@^5.1.6, ember-cli-babel@^5.1.7:
+ember-cli-babel@^5.0.0, ember-cli-babel@^5.1.6, ember-cli-babel@^5.1.7:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-5.2.4.tgz#5ce4f46b08ed6f6d21e878619fb689719d6e8e13"
   dependencies:
@@ -2724,6 +2724,12 @@ ember-try@^0.2.15:
     rimraf "^2.3.2"
     rsvp "^3.0.17"
     semver "^5.1.0"
+
+ember-utc-transform@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/ember-utc-transform/-/ember-utc-transform-0.0.8.tgz#55c8e88c2d5266de9ca465b2349ebb15fc90c41b"
+  dependencies:
+    ember-cli-babel "^5.0.0"
 
 ember-weakmap@^2.0.0:
   version "2.0.0"

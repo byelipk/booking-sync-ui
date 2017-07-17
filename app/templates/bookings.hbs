@@ -1,1 +1,52 @@
-{{new-rental}}
+{{#if modalVisible}}
+  {{to-elsewhere
+      named="modal"
+      send=(component 'calendar-update'
+        booking=booking
+        hide=(action 'update')) }}
+{{/if}}
+
+<header class="hero mb-3">
+  <div class="row">
+    <div class="col-md-12 col-lg-7">
+      <h1 class="title">BookSync (Bookings)</h1>
+      <p class="subtitle">Did someone else already book a timeslot you wanted? Just delete it. 😃</p>
+    </div>
+  </div>
+</header>
+
+
+<section class="container">
+  <div class="row">
+    <div class="col-12">
+      <h5>
+      {{#if model.length}}
+        Already Booked
+      {{else}}
+        {{#link-to 'search'}}Go on and book some rentals!{{/link-to}}
+      {{/if}}
+      </h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="d-flex flex-row flex-nowrap horizontal-scroll w-100">
+      {{#each model as |booking|}}
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100">
+            {{!-- <img class="card-img-top img-fluid" src="{{booking.rental.imgUrl}}"> --}}
+            <div class="card-block">
+              <h5 class="card-title">{{booking.rental.name}}</h5>
+              <p class="card-text">{{date-range booking.startAt booking.endAt}}</p>
+              <p class="card-text">{{booking.clientEmail}}</p>
+            </div>
+            <div class="p-3">
+              <button {{action 'delete' booking}} type="button" name="button" class="mr-3">Delete</button>
+              <button {{action 'update' booking}} type="button" name="button">Change Dates</button>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
