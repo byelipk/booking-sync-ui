@@ -2,7 +2,15 @@
   {{#link-to "index" class="navbar-brand"}}LOGO{{/link-to}}
   <div class="d-flex w-100">
     <ul class="navbar-nav flex-row ml-auto">
-      {{yield}}
+      <li class="nav-item mr-3">
+        {{#link-to 'search'}}Search{{/link-to}}
+      </li>
+      <li class="nav-item mr-3">
+        {{#link-to 'host'}}Rentals{{/link-to}}
+      </li>
+      <li class="nav-item">
+        {{#link-to 'bookings'}}Bookings{{/link-to}}
+      </li>
     </ul>
   </div>
 </nav>
