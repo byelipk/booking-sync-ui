@@ -29,7 +29,7 @@
 @include media-breakpoint-up(md) {
   .hero {
     .title {
-      font-size: 2.25rem;
+      font-size: 2rem;
     }
     .subtitle {
       font-size: 2rem;
@@ -40,7 +40,7 @@
 @include media-breakpoint-up(lg) {
   .hero {
     .subtitle {
-      font-size: 2.5rem;
+      font-size: 2.25rem;
     }
   }
 }
