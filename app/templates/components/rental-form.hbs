@@ -1,0 +1,33 @@
+<div class="form-group">
+  <label for="name">Rental Name</label>
+  {{input
+    id="name"
+    aria-describedby="nameHelp"
+    autocomplete="off"
+    maxlength="40"
+    class="form-control form-control-lg"
+    value=rentalName }}
+  <small id="nameHelp" class="form-text text-muted">Make sure the place is presentable, or we'll both get a bad reputation. 40 Character max.</small>
+</div>
+<div class="form-group">
+  <label for="daily-rate">Daily Rate</label>
+  {{input
+     id="daily-rate"
+     type="number"
+     min="1"
+     step="1"
+     class="form-control form-control-lg"
+     aria-describedby="dailyRateHelp"
+     value=dailyRate }}
+  <small id="dailyRateHelp" class="form-text text-muted">Example: $100</small>
+</div>
+
+<div class="form-group">
+  <button type="submit" class="btn btn-block btn-marketing btn-lg">
+    {{#if submitTask.isIdle}}
+      Put my rental on the market
+    {{else}}
+      Saving...
+    {{/if}}
+  </button>
+</div>

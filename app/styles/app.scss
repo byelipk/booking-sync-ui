@@ -8,6 +8,7 @@
 @import 'ember-power-select-typeahead';
 @import 'ember-power-calendar';
 
+@import 'rental';
 @import 'calendar';
 @import 'cover';
 @import 'hero';
@@ -18,6 +19,9 @@
   cursor: pointer;
 }
 
+html {
+  color: $copy;
+}
 
 nav {
   a {
