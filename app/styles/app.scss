@@ -13,6 +13,11 @@
 @import 'hero';
 @import 'drop-down';
 
+// Remove click delay across all platforms
+[data-ember-action], a, button, input, .link {
+  cursor: pointer;
+}
+
 
 nav {
   a {
