@@ -80,3 +80,20 @@
 .slider-down {
   animation: slider-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
 }
+
+
+/* slide-from-top */
+.slide-from-top-enter {
+  transform: translateY(-1000px);
+}
+.slide-from-top-enter.slide-from-top-enter-active {
+  transform: translateY(0);
+  transition: transform .5s ease-out;
+}
+.slide-from-top-leave {
+  transform: translateY(0);
+}
+.slide-from-top-leave.slide-from-top-leave-active {
+  transform: translateY(-1000px);
+  transition: transform .5s ease-in;
+}

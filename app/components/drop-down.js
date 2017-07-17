@@ -1,10 +1,17 @@
 import Ember from 'ember';
+import TransitionMixin from 'ember-css-transitions/mixins/transition-mixin';
 
-export default Ember.Component.extend({
+
+export default Ember.Component.extend(TransitionMixin, {
+  transitionClass: 'slide-from-top',
+
   classNames: ['drop-down'],
 
   actions: {
     hide() {
+      this.get('hide')();
+    },
+    clear() {
       this.get('hide')();
     },
     what() {
