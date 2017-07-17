@@ -1,0 +1,31 @@
+
+.drop-down {
+  background: white;
+  width: 100vw;
+  height: 35vh;
+  position: absolute;
+  overflow-y: hidden;
+  z-index: 1000;
+  border: 1px solid $gray;
+  box-shadow: 0 0 2px 0px rgba(22, 22, 22, 0.2) !important;
+}
+.drop-down-inner {
+  @extend .d-flex;
+  @extend .flex-column;
+
+  section {
+    @extend .d-flex;
+    @extend .flex-column;
+    @extend .w-100;
+    @extend .p-3;
+    @extend .justify-content-start;
+
+    svg, span {
+      display: inline-block;
+      fill: currentcolor;
+      height: 18px;
+      width: 18px;
+      padding-top: 5px;
+    }
+  }
+}

@@ -2,14 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['drop-down'],
-  classNameBindings: ['goDown', 'goUp'],
-
-  goDown: true,
-  goUp: false,
 
   actions: {
     hide() {
-      this.set('goUp', true);
+      this.get('hide')();
     },
     what() {
       this.get('what')();
@@ -19,12 +15,6 @@ export default Ember.Component.extend({
     },
     howMuch() {
       this.get('howMuch')();
-    }
-  },
-
-  animationEnd() {
-    if (this.get('goUp')) {
-      this.get('hide')();
     }
   },
 

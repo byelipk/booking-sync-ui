@@ -1,6 +1,8 @@
-@import "variables";
+@import 'variables';
 
-@import "bootstrap";
+@import 'animations';
+
+@import 'bootstrap';
 
 @import 'ember-power-select';
 @import 'ember-power-select-typeahead';
@@ -9,6 +11,8 @@
 @import 'calendar';
 @import 'cover';
 @import 'hero';
+@import 'drop-down';
+
 
 nav {
   a {
@@ -168,38 +172,6 @@ nav {
   }
 }
 
-.drop-down {
-  background: white;
-  width: 100vw;
-  height: 50vh;
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: 1000;
-  border: 1px solid $gray;
-  box-shadow: 0 0 2px 0px rgba(22, 22, 22, 0.2) !important;
-}
-.drop-down-inner {
-  @extend .d-flex;
-  @extend .flex-column;
-
-  section {
-    @extend .d-flex;
-    @extend .flex-column;
-    @extend .w-100;
-    @extend .p-3;
-    @extend .justify-content-start;
-
-    svg, span {
-      display: inline-block;
-      fill: currentcolor;
-      height: 18px;
-      width: 18px;
-      padding-top: 5px;
-    }
-  }
-}
-
 .horizontal-scroll {
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
@@ -215,82 +187,4 @@ nav {
   ul {
     min-height: 20rem;
   }
-}
-
-@keyframes go-down {
-  0% {
-    height: 0vh;
-  }
-  100% {
-    height: 50vh;
-  }
-}
-
-@keyframes go-up {
-  0% {
-    height: 50vh;
-  }
-  100% {
-    height: 0vh;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.fade-in {
-  animation: fade-in 200ms cubic-bezier(.4,.42,.53,.91) 1;
-}
-
-.fade-out {
-  animation: fade-out 200ms cubic-bezier(.4,.42,.53,.91) 1;
-}
-
-.go-down {
-  animation: go-down 300ms cubic-bezier(.4,.42,.53,.91) 1;
-}
-
-.go-up {
-  animation: go-up 300ms cubic-bezier(.4,.42,.53,.91) 1;
-}
-
-@keyframes slider-up {
-  0% {
-    height: 0vh;
-  }
-  100% {
-    height: 100vh;
-  }
-}
-
-@keyframes slider-down {
-  0% {
-    height: 100vh;
-  }
-  100% {
-    height: 0vh;
-  }
-}
-
-.slider-up {
-  animation: slider-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
-}
-
-.slider-down {
-  animation: slider-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
 }
