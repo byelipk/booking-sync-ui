@@ -23,7 +23,7 @@ export default Ember.Component.extend(TransitionMixin, NotScrollable, {
     this.focus();
   }),
 
-  calculatePosition(trigger, content) {
+  calculatePosition(trigger) {
     const measurements = trigger.getBoundingClientRect();
 
     return {

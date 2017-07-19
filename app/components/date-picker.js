@@ -4,7 +4,7 @@ import moment from 'moment';
 export default Ember.Component.extend({
   moment: Ember.inject.service(),
 
-  calculatePosition(trigger) {
+  calculatePosition() {
     const element = document.querySelector("#date-picker");
     const measurements = element.getBoundingClientRect();
 

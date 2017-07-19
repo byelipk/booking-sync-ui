@@ -50,9 +50,6 @@ export default Ember.Component.extend(TransitionMixin, NotScrollable, {
       if (e.errors) {
         e.errors.forEach(error => alert(error.detail));
       }
-      else {
-        console.error(e);
-      }
     }
   }).drop(),
 

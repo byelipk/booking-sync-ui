@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { task, timeout } from 'ember-concurrency';
+import { task } from 'ember-concurrency';
 
 export default Ember.Component.extend({
   tagName: 'form',
@@ -31,7 +31,7 @@ export default Ember.Component.extend({
       return false;
     }
 
-    if (!dailyRate || dailyRate <= 0 && parseInt(dailyRate, 10) !== NaN) {
+    if (!dailyRate || dailyRate <= 0 && isNaN(parseInt(dailyRate, 10))) {
       return false;
     }
 

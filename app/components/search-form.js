@@ -1,6 +1,5 @@
 import Ember from 'ember';
-import moment from 'moment';
-import { task, timeout } from 'ember-concurrency';
+import { task } from 'ember-concurrency';
 
 export default Ember.Component.extend({
   tagName: 'form',
@@ -27,7 +26,7 @@ export default Ember.Component.extend({
 
     // This action is invoked when the navigation bar
     // is displayed or hidden.
-    toggleDropdown(rental) {
+    toggleDropdown() {
       this.toggleProperty('dropdownVisible');
     }
   },

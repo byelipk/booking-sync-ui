@@ -19,14 +19,11 @@ export default Ember.Controller.extend({
     yield timeout(50);
 
     try {
-      const result = yield booking.destroyRecord();
+      yield booking.destroyRecord();
       alert("Nice! You've freed up some dates. 🤡");
     } catch (e) {
       if (e.errors) {
         e.errors.forEach(error => alert(error.detail));
-      }
-      else {
-        console.error(e);
       }
     }
   }).drop()
