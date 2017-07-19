@@ -6,15 +6,10 @@
         hide=(action 'update')) }}
 {{/if}}
 
-<header class="hero mb-3">
-  <div class="row">
-    <div class="col-md-12 col-lg-7">
-      <h1 class="title">BookSync (Bookings)</h1>
-      <p class="subtitle">Did someone else already book a timeslot you wanted? Just delete it. 😃</p>
-    </div>
-  </div>
-</header>
-
+{{#call-out as |header|}}
+  {{header.title text="BookSync (Bookings)"}}
+  {{header.subtitle text="Did someone else already book a timeslot you wanted? Just delete it. 😃"}}
+{{/call-out}}
 
 <section class="container">
   <div class="row">
