@@ -8,7 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('search');
-  this.route('host');
+  this.route('rentals');
   this.route('bookings');
 });
 
