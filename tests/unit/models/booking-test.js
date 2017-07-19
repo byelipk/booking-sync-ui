@@ -1,12 +1,15 @@
+import Ember from 'ember';
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('booking', 'Unit | Model | booking', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:rental']
 });
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  // let store = this.store();
-  assert.ok(!!model);
+test('should have many bookings', function(assert) {
+  const Booking = this.store().modelFor('booking');
+  const relationship = Ember.get(Booking, 'relationshipsByName').get('rental');
+
+  assert.equal(relationship.key, 'rental', 'has relationship with rental');
+  assert.equal(relationship.kind, 'belongsTo', 'kind of relationship is belongsTo');
 });
