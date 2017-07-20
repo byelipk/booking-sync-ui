@@ -1,0 +1,37 @@
+.sex-on {
+  min-height: 2.55em;
+}
+
+.the-beach {
+  border: 1px solid $gray;
+  background: white;
+
+  .ember-power-select-option {
+    padding: .5rem;
+    p {
+      margin-bottom: 0;
+      font-weight: normal;
+      font-size: 1.15rem;
+      color: $copy;
+    }
+    span {
+      font-weight: lighter;
+      color: lighten($copy, 25%);
+    }
+  }
+
+  .ember-power-select-option[aria-current="true"] {
+    background-color: #CCEEEB;
+  }
+}
+
+.destination > div {
+  border-top: 2px solid purple;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.destination {
+  ul {
+    min-height: 20rem;
+  }
+}

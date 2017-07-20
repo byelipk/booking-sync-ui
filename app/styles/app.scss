@@ -1,200 +1,27 @@
+// SCSS Variables
 @import 'variables';
 
-@import 'animations';
-
+// CSS Framework
 @import 'bootstrap';
 
+// Addons
 @import 'ember-power-select';
 @import 'ember-power-select-typeahead';
 @import 'ember-power-calendar';
 
-@import 'rental';
+// Components
+@import 'base';
+@import 'navbar';
+@import 'buttons';
 @import 'calendar';
 @import 'cover';
 @import 'hero';
 @import 'drop-down';
+@import 'type-ahead';
 
-// Remove click delay across all platforms
-[data-ember-action], a, button, input, .link {
-  cursor: pointer;
-}
+// Pages
+@import 'search';
+@import 'rental';
 
-html {
-  color: $copy;
-}
-
-nav {
-  a {
-    color: $copy;
-  }
-  a.navbar-brand {
-    color: $marketing;
-  }
-}
-
-.search {
-  margin-top: 3rem;
-  margin-bottom: 5rem;
-
-  @extend .container;
-
-  .search-form {
-    border: 1px solid $gray;
-    border-radius: 4px;
-
-    @extend .justify-content-between;
-    @extend .d-flex;
-    @extend .align-items-center;
-  }
-
-  .form-item {
-    @extend .px-3;
-    @extend .pt-2;
-
-    .form-group {
-      margin-bottom: 0;
-    }
-
-    label {
-      color: #484848;
-      margin-bottom: 0;
-    }
-
-    input[type="text"], input[type="search"] {
-      padding-left: 0;
-      border: none;
-      font-size: 1.25rem;
-      color: #484848;
-      &:focus {
-        border: none;
-      }
-    }
-  }
-}
-
-.search-divider {
-  border-right: 1px solid $gray;
-}
-
-.btn-marketing {
-  cursor: pointer;
-  background-color: $marketing;
-  border-color: $marketing;
-
-  @extend .btn-warning;
-
-  &:hover, &:active {
-    background-color: darken($marketing, 5%);
-    border-color: darken($marketing, 5%);
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 2px lighten($marketing, 5%);
-  }
-}
-
-.btn-toggle-dropdown {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: $copy;
-  &:focus {
-    outline: none;
-  }
-  svg {
-    display: inline-block;
-    fill: currentcolor;
-    height: 18px;
-    width: 18px;
-    padding-top: 5px;
-  }
-}
-
-.btn-toggle-popup {
-  @extend .btn;
-  @extend .btn-warning;
-
-  cursor: pointer;
-  background-color: white;
-  border-color: $gray;
-  color: $copy;
-  box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.15) !important;
-
-  &:hover, &:active {
-    background-color: darken($marketing, 5%);
-    border-color: darken($marketing, 5%);
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 2px lighten($gray, 5%);
-  }
-}
-
-.modal-toggle {
-  button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
-  }
-  svg {
-    display: inline-block;
-    fill: currentcolor;
-    height: 18px;
-    width: 18px;
-    padding-top: 5px;
-  }
-}
-
-.btn-naked {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-// Typeahead
-.sex-on {
-  min-height: 2.55em;
-}
-
-.the-beach {
-  border: 1px solid $gray;
-  background: white;
-
-  .ember-power-select-option {
-    padding: .5rem;
-    p {
-      margin-bottom: 0;
-      font-weight: normal;
-      font-size: 1.15rem;
-      color: $copy;
-    }
-    span {
-      font-weight: lighter;
-      color: lighten($copy, 25%);
-    }
-  }
-
-  .ember-power-select-option[aria-current="true"] {
-    background-color: #CCEEEB;
-  }
-}
-
-.horizontal-scroll {
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-
-
-.destination > div {
-  border-top: 2px solid purple;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.destination {
-  ul {
-    min-height: 20rem;
-  }
-}
+// Utilities
+@import 'animations';

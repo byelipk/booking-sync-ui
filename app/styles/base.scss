@@ -1,0 +1,15 @@
+
+
+html {
+  color: $copy;
+}
+
+// Remove click delay across all platforms
+[data-ember-action], a, button, input, .link {
+  cursor: pointer;
+}
+
+.horizontal-scroll {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch; // iOS fix
+}

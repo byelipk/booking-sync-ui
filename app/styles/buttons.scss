@@ -1,0 +1,77 @@
+.btn-marketing {
+  cursor: pointer;
+  background-color: $marketing;
+  border-color: $marketing;
+
+  @extend .btn-warning;
+
+  &:hover, &:active {
+    background-color: darken($marketing, 5%);
+    border-color: darken($marketing, 5%);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px lighten($marketing, 5%);
+  }
+}
+
+.btn-toggle-dropdown {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $copy;
+  &:focus {
+    outline: none;
+  }
+  svg {
+    display: inline-block;
+    fill: currentcolor;
+    height: 18px;
+    width: 18px;
+    padding-top: 5px;
+  }
+}
+
+.btn-toggle-popup {
+  @extend .btn;
+  @extend .btn-warning;
+
+  cursor: pointer;
+  background-color: white;
+  border-color: $gray;
+  color: $copy;
+  box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.15) !important;
+
+  &:hover, &:active {
+    background-color: darken($marketing, 5%);
+    border-color: darken($marketing, 5%);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px lighten($gray, 5%);
+  }
+}
+
+.btn-naked {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-toggle {
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+  svg {
+    display: inline-block;
+    fill: currentcolor;
+    height: 18px;
+    width: 18px;
+    padding-top: 5px;
+  }
+}
