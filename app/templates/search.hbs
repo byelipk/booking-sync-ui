@@ -8,12 +8,12 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h5 style="margin-top:5rem">Rentals</h5>
+      <h5>Rentals</h5>
     </div>
   </div>
 
   <div class="row">
-    <div class="d-flex flex-row flex-nowrap horizontal-scroll w-100">
+    <div class="d-flex horizontal-scroll flex-row">
       {{#each model as |rental|}}
         {{rental-card rental=rental}}
       {{/each}}
