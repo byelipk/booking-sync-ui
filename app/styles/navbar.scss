@@ -1,11 +1,26 @@
-nav {
+.navbar {
+  @extend .flex-row;
+  @extend .flex-nowrap;
+
   a {
     color: $copy;
   }
+
   .navbar-brand {
     color: $marketing;
   }
+
   .navbar-nav {
+    @extend .flex-row;
+    @extend .ml-auto;
+    
     align-items: center;
+
+    li {
+      margin-right: 1rem;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
