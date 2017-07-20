@@ -1,0 +1,43 @@
+.call-out {
+  .title {
+    font-size: 1.75rem;
+    margin-top: 3rem;
+    font-weight: bold;
+    color: $marketing;
+  }
+  .subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: $copy;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .call-out {
+    .title {
+      font-size: 2rem;
+    }
+    .subtitle {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .call-out {
+    .title {
+      font-size: 2rem;
+    }
+    .subtitle {
+      font-size: 2rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .call-out {
+    .subtitle {
+      font-size: 2.25rem;
+    }
+  }
+}
