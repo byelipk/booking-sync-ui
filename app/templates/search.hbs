@@ -16,15 +16,12 @@
 
   <div class="row">
     <div class="col-12">
-      <h5>Rentals</h5>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="d-flex horizontal-scroll flex-row">
-      {{#each model as |rental|}}
-        {{rental-card rental=rental}}
-      {{/each}}
+      <h2 class="ml-3">Rentals</h2>
+      <div class="d-flex horizontal-scroll flex-row">
+        {{#each model as |rental|}}
+          {{rental-card rental=rental}}
+        {{/each}}
+      </div>
     </div>
   </div>
 </div>

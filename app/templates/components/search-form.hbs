@@ -4,24 +4,64 @@
       send=(component modalWindow
         rental=rental
         range=range
-        hide=(action 'hideModal')) }}
+        hide=(action 'hide' modalWindow)) }}
 {{/if}}
 
 {{#if dropdownVisible}}
   {{to-elsewhere
       named="dropdown"
       send=(
-        component 'drop-down'
+        component 'dropdown-menu'
           rental=rental
           range=range
-          hide=(action 'toggleDropdown')
-          what=(action 'showModal' 'rental-input')
-          when=(action 'showModal' 'calendar-input')
-          howMuch=(action 'showModal' 'slider-input')) }}
+          hide=(action 'hide' 'dropdown-menu')
+          what=(action 'show' 'typeahead-modal')
+          when=(action 'show' 'datepicker-modal')
+          howMuch=(action 'show' 'invoice-modal')) }}
 {{/if}}
 
-<div class="search-form">
-  <div class="form-item w-100 p-1 hidden-md-up">
+{{!-- Large and extra large screens--}}
+<div class="large-screen">
+  <div class="search-form-group">
+    <label for="what">What</label>
+    {{typeahead-input selected=rental}}
+  </div>
+  <div class="search-form-group">
+    <label for="when">When</label>
+    {{datepicker-input range=range}}
+  </div>
+  <div class="search-form-group">
+    <label for="how-much">How much</label>
+    {{invoice-input rental=rental range=range}}
+  </div>
+  <div class="search-form-group">
+    {{search-form-button submitTask=submitTask}}
+  </div>
+</div>
+
+{{!-- Medium sized screens --}}
+<div class="medium-screen">
+  <div class="search-form-group">
+    <button {{action 'show' 'typeahead-modal'}} type="button" class="btn-block btn-lg">What</button>
+  </div>
+  <div class="search-form-group">
+    <button {{action 'show' 'datepicker-modal'}} type="button" class="btn-block btn-lg">When</button>
+  </div>
+  <div class="search-form-group">
+    <button {{action 'show' 'invoice-modal'}} type="button" class="btn-block btn-lg">How much</button>
+  </div>
+  <div class="search-form-group"></div>
+</div>
+
+
+{{!-- Small sized screens --}}
+<div class="small-screen">
+  <div class="search-form-group">
+    <button {{action 'show' 'dropdown-menu'}} type="button" class="btn-block btn-lg">What | When | How much</button>
+  </div>
+</div>
+
+  {{!-- <div class="form-item w-100 p-1 hidden-md-up">
     <button {{action 'toggleDropdown'}} type="button" class="btn-toggle-dropdown">
       <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false">
         <path d="M10.4 18.2c-4.2-.6-7.2-4.5-6.6-8.8.6-4.2 4.5-7.2 8.8-6.6 4.2.6 7.2 4.5 6.6 8.8-.6 4.2-4.6 7.2-8.8 6.6M23 22l-5-5c1.4-1.4 2.3-3.1 2.6-5.2.7-5.1-2.8-9.7-7.8-10.5-5-.7-9.7 2.8-10.5 7.9-.7 5.1 2.8 9.7 7.8 10.5 2.5.4 4.9-.3 6.7-1.7v.1l5 5c.3.3.8.3 1.1 0 .3-.3.4-.8.1-1.1" fill-rule="evenodd"></path>
@@ -39,7 +79,7 @@
     </div>
     <div class="form-group hidden-md-down">
       <label for="what">What</label>
-      {{type-ahead selected=rental}}
+      {{typeahead-input selected=rental}}
     </div>
   </div>
 
@@ -71,9 +111,8 @@
 
   <div class="form-item w-0 p-1 hidden-md-down">
     {{search-form-button submitTask=submitTask}}
-  </div>
-</div>
+  </div> --}}
 
-<div class="hidden-lg-up mt-3 pt-3">
+{{!-- <div class="hidden-lg-up mt-3 pt-3">
   {{search-form-button submitTask=submitTask}}
-</div>
+</div> --}}

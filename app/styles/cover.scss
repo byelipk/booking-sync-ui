@@ -1,5 +1,3 @@
-@import "variables";
-
 .cover {
   background: white;
   height: 100vh;
@@ -8,21 +6,49 @@
   bottom: 0;
   left: 0;
   z-index: 2000;
+}
 
-  input {
-    border: 1px solid $gray;
-    border-radius: 4px;
+.cover-inner {
+  @extend .d-flex;
+  @extend .flex-column;
+
+  height: 100vh;
+
+  .ember-power-select-typeahead-dropdown {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   }
+
+  .ember-power-select-typeahead-trigger {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .ember-power-select-search-input {
+    padding: 2rem;
+    font-size: 1.25rem;
+    border-radius: 0.25rem;
+    border: 0.01rem solid $gray;
+  }
+
   div[aria-expanded="true"] > input {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 }
 
-.cover-inner {
+.cover-header {
   @extend .d-flex;
-  @extend .flex-column;
-  height: 100vh;
+  @extend .p-3;
+  @extend .justify-content-between;
+}
+
+.cover-body {
+  @extend .d-flex;
+  @extend .justify-content-center;
+}
+
+.cover-footer {
+  @extend .mt-auto;
 }
 
 .overflow-wrapper.no-scroll {
@@ -46,6 +72,7 @@
 @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
   .cover, .cover-inner {
     height: 1024px;
+    width: 768px;
   }
 }
 
@@ -54,7 +81,8 @@
  */
 @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
   .cover, .cover-inner {
-    height: 768px;
+    height: 1024px;
+    width: 768px;
   }
 }
 
@@ -63,7 +91,8 @@
   */
 @media all and (device-width: 375px) and (device-height: 667px) {
   .cover, .cover-inner {
-    height: 550px;
+    height: 667px;
+    width: 375px;
   }
 }
 

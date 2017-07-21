@@ -1,13 +1,8 @@
-<div class="row">
-  <div class="col-md-12 col-lg-7">
-    {{#if hasBlock}}
-      {{yield (hash
-        title=(component 'call-out-title')
-        subtitle=(component 'call-out-subtitle'))}}
-    {{else}}
-      <h1 class="title">{{title}}</h1>
-      <p class="subtitle">{{subtitle}}</p>
-    {{/if}}
-  </div>
-</div>
-{{yield}}
+{{#if hasBlock}}
+  {{yield (hash
+    title=(component 'call-out-title')
+    subtitle=(component 'call-out-subtitle'))}}
+{{else}}
+  <h1 class="title">{{title}}</h1>
+  <p class="subtitle">{{subtitle}}</p>
+{{/if}}

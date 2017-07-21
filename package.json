@@ -42,10 +42,11 @@
     "ember-load-initializers": "^1.0.0",
     "ember-moment": "^7.3.1",
     "ember-power-calendar": "^0.5.0",
-    "ember-power-select-typeahead": "^0.5.8",
+    "ember-power-select-typeahead": "git+ssh://git@github.com/byelipk/ember-power-select-typeahead.git",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.14.0",
     "ember-utc-transform": "^0.0.8",
+    "liquid-fire": "^0.27.3",
     "loader.js": "^4.2.3"
   },
   "engines": {

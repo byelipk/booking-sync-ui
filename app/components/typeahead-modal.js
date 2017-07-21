@@ -7,15 +7,15 @@ export default Ember.Component.extend(TransitionMixin, NotScrollable, {
   classNames: ['cover'],
 
   actions: {
-    hide() {
-      this.get('hide')(this.get('rental'), this.get('range'));
+    hide(rental) {
+      this.get('hide')(rental, this.get('range'));
     },
     reset() {
       this.set('rental', null);
       this.focus();
     },
     save() {
-      this.get('hide')(this.get('rental'), this.get('range'));
+      this.send('hide');
     }
   },
 
@@ -29,13 +29,13 @@ export default Ember.Component.extend(TransitionMixin, NotScrollable, {
     return {
       style: {
         left: measurements.left,
-        top: measurements.top + measurements.height,
+        top: measurements.top + measurements.height + 35,
         width: measurements.width
       }
     };
   },
 
   focus() {
-    document.querySelector('.sex-on input').focus();
+    document.querySelector('.ember-power-select-search-input').focus();
   }
 });

@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('type-ahead', 'Integration | Component | type ahead', {
+moduleForComponent('modal-sheet', 'Integration | Component | modal sheet', {
   integration: true
 });
 
@@ -10,15 +10,15 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{type-ahead}}`);
+  this.render(hbs`{{modal-sheet}}`);
 
   assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`
-    {{#type-ahead}}
+    {{#modal-sheet}}
       template block text
-    {{/type-ahead}}
+    {{/modal-sheet}}
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');

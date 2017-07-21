@@ -1,0 +1,6 @@
+{{#if hasBlock}}
+  {{yield (hash
+    header=(component 'modal-header')
+    body=(component 'modal-body')
+    footer=(component 'modal-footer')) }}
+{{/if}}

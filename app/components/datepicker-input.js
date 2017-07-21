@@ -5,7 +5,8 @@ export default Ember.Component.extend({
   moment: Ember.inject.service(),
 
   calculatePosition() {
-    const element = document.querySelector("#date-picker");
+    const parent = document.querySelector(".desktop-screen");
+    const element = parent.children[1]; 
     const measurements = element.getBoundingClientRect();
 
     return {

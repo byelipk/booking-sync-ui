@@ -5,6 +5,19 @@ export default Ember.Component.extend({
   ajax: Ember.inject.service(),
   store: Ember.inject.service(),
 
+  actions: {
+    updateSelected(rental, trigger) {
+      this.set('selected', rental);
+
+      if (this.get('onselected')) {
+        this.get('onselected')(rental);
+      }
+      else {
+        trigger.actions.close();
+      }
+    }
+  },
+
   searchTask: task(function * (term) {
     yield timeout(250);
 
@@ -14,14 +27,14 @@ export default Ember.Component.extend({
   }).restartable(),
 
   calculatePosition() {
-    const target = document.querySelector('.search');
+    const target = document.querySelector('.search-form');
     const measurements = target.getBoundingClientRect();
 
     return {
       style: {
-        left: measurements.left + 15,
+        left: measurements.left,
         top: measurements.top + measurements.height + 3,
-        width: measurements.width - 30 // Remove padding
+        width: measurements.width
       }
     };
   },

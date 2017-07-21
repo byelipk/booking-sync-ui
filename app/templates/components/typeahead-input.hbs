@@ -1,10 +1,8 @@
 {{#power-select-typeahead
     search=(perform searchTask)
-    onchange=(action (mut selected))
+    onchange=(action 'updateSelected')
     extra=(hash labelPath="name")
     selected=selected
-    triggerClass="sex-on"
-    dropdownClass="the-beach"
     placeholder="Anything"
     destination=destination
     calculatePosition=calculatePosition
