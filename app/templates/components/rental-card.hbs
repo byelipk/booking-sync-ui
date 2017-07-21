@@ -1,8 +1,9 @@
-<div class="card h-75">
-  <img class="card-img-top img-fluid" src="{{rental.imgUrl}}" alt="" style="height: 75%; width: 100%;">
+<div class="card h-100" style="overflow: hidden;">
+  <img class="card-img-top w-100" src="{{rental.imgUrl}}" alt="{{rental.name}}" style="height: 65%;">
   <div class="card-block">
     <p class="card-text">
-      <strong>{{currency rental.dailyRate '$'}}</strong> {{rental.name}}
+      <strong class="d-block">{{currency rental.dailyRate '$'}}</strong>
+      {{rental.name}}
     </p>
   </div>
 </div>

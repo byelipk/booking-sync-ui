@@ -1,7 +1,15 @@
 {{#if dropdown}}
   {{#basic-dropdown calculatePosition=calculatePosition as |dropdown|}}
     {{#dropdown.trigger}}
-      <input type="text" class="form-control" id="when" aria-describedby="When" placeholder="Anytime" value={{dateRange}} autocomplete="off">
+      <input
+      type="text"
+      class="form-control"
+      id="when"
+      aria-describedby="When"
+      placeholder="Anytime"
+      value="{{if (and range.start range.end)
+        (format-date-range range.start range.end) '' }}"
+      autocomplete="off">
     {{/dropdown.trigger}}
 
     {{#dropdown.content}}

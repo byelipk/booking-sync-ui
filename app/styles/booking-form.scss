@@ -1,8 +1,12 @@
 .booking-form {
-  border: 1px solid $gray;
-  border-radius: 4px;
   margin-top: 3rem;
   margin-bottom: 3rem;
+}
+
+.booking-form-wrapper {
+  border: 1px solid $gray;
+  border-radius: 4px;
+  margin-bottom: 2rem;
 }
 
 .booking-form-group {

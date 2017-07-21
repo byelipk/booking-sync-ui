@@ -1,9 +1,9 @@
 .btn-marketing {
+  @extend .btn-warning;
+
   cursor: pointer;
   background-color: $marketing;
   border-color: $marketing;
-
-  @extend .btn-warning;
 
   &:hover, &:active {
     background-color: darken($marketing, 5%);

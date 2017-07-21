@@ -2744,6 +2744,12 @@ ember-weakmap@^2.0.0:
   dependencies:
     ember-cli-babel "^5.1.6"
 
+ember-windoc@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ember-windoc/-/ember-windoc-0.2.0.tgz#b97e69cf65a2e27f2ee941616bfe475ac6857416"
+  dependencies:
+    ember-cli-babel "^6.0.0"
+
 ember-wormhole@^0.5.1:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/ember-wormhole/-/ember-wormhole-0.5.2.tgz#cc0ceb7db4f8b8da0fd852edc81d75cb1dcd92f1"
