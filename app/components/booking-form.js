@@ -1,5 +1,8 @@
 import Ember from 'ember';
+import CostCalculator from '../utils/cost-calculator';
 import { task } from 'ember-concurrency';
+
+const { computed } = Ember;
 
 export default Ember.Component.extend({
   tagName: 'form',
@@ -9,6 +12,9 @@ export default Ember.Component.extend({
 
   rental: null,
   range: null,
+  cost: computed('rental', 'range', function() {
+    return CostCalculator(this.get('rental'), this.get('range'));
+  }),
 
   actions: {
 

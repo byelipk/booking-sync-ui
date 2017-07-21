@@ -1,5 +1,8 @@
 import Ember from 'ember';
 import TransitionMixin from 'ember-css-transitions/mixins/transition-mixin';
+import CostCalculator from '../utils/cost-calculator';
+
+const { computed } = Ember;
 
 
 export default Ember.Component.extend(TransitionMixin, {
@@ -51,19 +54,7 @@ export default Ember.Component.extend(TransitionMixin, {
     }
   }),
 
-  rentalCost: Ember.computed('rental', 'range', function() {
-    const rental = this.get('rental');
-    const range = this.get('range');
-
-    if (!range       ||
-        !range.start ||
-        !range.end   ||
-        !rental      ||
-        !rental.get('dailyRate')) { return ''; }
-
-    const daysInRange = range.end.diff(range.start, 'days');
-    const dailyPrice  = Number.parseFloat(rental.get('dailyRate'));
-
-    return daysInRange * dailyPrice;
-  })
+  cost: computed('rental', 'range', function() {
+    return CostCalculator(this.get('rental'), this.get('range'));
+  }),
 });

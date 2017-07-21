@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
-export function currency(params/*, hash*/) {
-  let amount = params[0];
-  let sign   = params[1];
-
+export function currency([amount, sign]) {
   if (amount) {
     return `${sign}${parseInt(amount, 10)}`;
   }

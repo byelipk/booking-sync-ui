@@ -62,7 +62,7 @@
     </div>
     <div class="booking-form-group modal-toggle">
       <button {{action 'show' 'invoice-modal'}} type="button" class="btn-block btn-lg">
-        How much
+        {{if cost (currency cost '$') 'How much'}}
       </button>
     </div>
     <div class="booking-form-group">

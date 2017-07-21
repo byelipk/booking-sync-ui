@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import CostCalculator from '../utils/cost-calculator';
 
 const { computed } = Ember;
 
@@ -12,18 +13,6 @@ export default Ember.Component.extend({
   currencySymbol: '$',
 
   cost: computed('rental', 'range', function() {
-    const rental = this.get('rental');
-    const range = this.get('range');
-
-    if (!range       ||
-        !range.start ||
-        !range.end   ||
-        !rental      ||
-        !rental.get('dailyRate')) { return; }
-
-    const daysInRange = range.end.diff(range.start, 'days');
-    const dailyPrice  = Number.parseFloat(rental.get('dailyRate'));
-
-    return daysInRange * dailyPrice;
+    return CostCalculator(this.get('rental'), this.get('range'));
   }),
 });
