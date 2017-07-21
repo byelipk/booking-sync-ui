@@ -28,32 +28,6 @@ export default Ember.Component.extend(TransitionMixin, {
     }
   },
 
-  rentalName: Ember.computed('rental', function() {
-    const rental = this.get('rental');
-
-    if (rental && rental.get('name')) {
-      return rental.get('name');
-    }
-    else {
-      return "Anything";
-    }
-  }),
-
-  dateRange: Ember.computed('range', function() {
-    const range = this.get('range');
-
-    if (!range || !range.start || !range.end) {
-      return 'Anytime';
-    }
-
-    if (range.start.month() === range.end.month()) {
-      return `${range.start.format("MMM DD")} - ${range.end.format("DD")}`;
-    }
-    else {
-      return `${range.start.format("MMM DD")} - ${range.end.format("MMM DD")}`;
-    }
-  }),
-
   cost: computed('rental', 'range', function() {
     return CostCalculator(this.get('rental'), this.get('range'));
   }),
