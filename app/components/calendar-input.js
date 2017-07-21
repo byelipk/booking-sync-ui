@@ -1,12 +1,7 @@
 import Ember from 'ember';
 import moment from 'moment';
-import TransitionMixin from 'ember-css-transitions/mixins/transition-mixin';
-import NotScrollable from '../mixins/not-scrollable';
 
-export default Ember.Component.extend(TransitionMixin, NotScrollable, {
-  transitionClass: 'slide-from-bottom',
-  classNames: ['cover'],
-
+export default Ember.Component.extend({
   actions: {
     hide() {
       this.get('hide')(this.get('rental'), this.get('range'));
@@ -15,7 +10,14 @@ export default Ember.Component.extend(TransitionMixin, NotScrollable, {
       this.set('range', null);
     },
     save() {
-      this.get('hide')(this.get('rental'), this.get('range'));
+      this.send('hide');
+    },
+    updateRange(selection) {
+      this.set('range', selection.moment);
+
+      if (selection.moment.start && selection.moment.end) {
+        this.send('hide');
+      }
     }
   },
 

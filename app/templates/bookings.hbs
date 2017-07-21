@@ -32,7 +32,7 @@
             {{!-- <img class="card-img-top img-fluid" src="{{booking.rental.imgUrl}}"> --}}
             <div class="card-block">
               <h5 class="card-title">{{booking.rental.name}}</h5>
-              <p class="card-text">{{date-range booking.startAt booking.endAt}}</p>
+              <p class="card-text">{{format-date-range booking.startAt booking.endAt}}</p>
               <p class="card-text">{{booking.clientEmail}}</p>
             </div>
             <div class="p-3">

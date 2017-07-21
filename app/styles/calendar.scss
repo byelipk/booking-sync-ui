@@ -4,7 +4,11 @@
 }
 
 .calendar-md {
-  @include ember-power-calendar($cell-size: 35px);
+  @include ember-power-calendar($cell-size: 30px);
+
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
 }
 
 .ember-basic-dropdown-content {

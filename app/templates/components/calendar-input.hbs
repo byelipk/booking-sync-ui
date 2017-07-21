@@ -1,46 +1,24 @@
-<div class="cover-inner">
-  <header class="d-flex p-3 justify-content-between">
-     <button {{action "hide"}} type="button" class="btn-naked">
-       <svg viewBox="0 0 12 12" role="img" aria-label="Close" focusable="false" style="display: block; fill: rgb(72, 72, 72); height: 15px; width: 15px;"><path fill-rule="evenodd" d="M11.5 10.5c.3.3.3.8 0 1.1-.3.3-.8.3-1.1 0L6 7.1l-4.5 4.5c-.3.3-.8.3-1.1 0-.3-.3-.3-.8 0-1.1L4.9 6 .5 1.5C.2 1.2.2.7.5.4c.3-.3.8-.3 1.1 0L6 4.9 10.5.4c.3-.3.8-.3 1.1 0 .3.3.3.8 0 1.1L7.1 6l4.4 4.5z"></path></svg>
-     </button>
-     <strong>When</strong>
-     <button {{action "reset"}} type="button" class="btn-naked">Reset</button>
-  </header>
+{{#power-calendar-range
+    center=center
+    selected=range
+    class=calendarClass
+    onCenterChange=(action (mut center) value="date")
+    onSelect=(action 'updateRange') as |cal|}}
+    {{!-- onSelect=(action (mut range) value="moment") as |cal|}} --}}
 
-  <section class="d-flex justify-content-center">
-    <div class="p-3 w-100 text-center">
-      {{#power-calendar-range
-          center=center
-          selected=range
-          class="calendar calendar-lg mx-auto"
-          onCenterChange=(action (mut center) value="date")
-          onSelect=(action (mut range) value="moment") as |cal|}}
+    {{!-- Calendar navigation --}}
+    <nav class="ember-power-calendar-nav py-3">
+      <button type="button" class="ember-power-calendar-nav-control" onclick={{action cal.actions.moveCenter -1 'month'}}>
+        <svg viewBox="0 0 1000 1000"><path d="M336.2 274.5l-210.1 210h805.4c13 0 23 10 23 23s-10 23-23 23H126.1l210.1 210.1c11 11 11 21 0 32-5 5-10 7-16 7s-11-2-16-7l-249.1-249c-11-11-11-21 0-32l249.1-249.1c21-21.1 53 10.9 32 32z"></path></svg>
+      </button>
+      <div class="ember-power-calendar-nav-title">
+        {{moment-format cal.center 'MMMM YYYY'}}
+      </div>
+      <button class="ember-power-calendar-nav-control" onclick={{action cal.actions.moveCenter 1 'month'}}>
+        <svg viewBox="0 0 1000 1000"><path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z"></path></svg>
+      </button>
+    </nav>
 
-          {{!-- Calendar navigation --}}
-          <nav class="ember-power-calendar-nav py-3">
-            <button type="button" class="ember-power-calendar-nav-control" onclick={{action cal.actions.moveCenter -1 'month'}}>
-              <svg viewBox="0 0 1000 1000"><path d="M336.2 274.5l-210.1 210h805.4c13 0 23 10 23 23s-10 23-23 23H126.1l210.1 210.1c11 11 11 21 0 32-5 5-10 7-16 7s-11-2-16-7l-249.1-249c-11-11-11-21 0-32l249.1-249.1c21-21.1 53 10.9 32 32z"></path></svg>
-            </button>
-            <div class="ember-power-calendar-nav-title">
-              {{moment-format cal.center 'MMMM YYYY'}}
-            </div>
-            <button class="ember-power-calendar-nav-control" onclick={{action cal.actions.moveCenter 1 'month'}}>
-              <svg viewBox="0 0 1000 1000"><path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z"></path></svg>
-            </button>
-          </nav>
-
-          {{cal.days
-            showDaysAround=false
-            weekdayFormat="min"
-            minDate=today}}
-        {{/power-calendar-range}}
-    </div>
-  </section>
-
-
-  <footer class="mt-auto">
-    <div class="p-3 w-100">
-      <button {{action 'save'}} type="button" class="btn-block btn-lg btn-marketing">Save</button>
-    </div>
-  </footer>
-</div>
+    {{!-- The days --}}
+    {{cal.days showDaysAround=false weekdayFormat="min" minDate=today}}
+  {{/power-calendar-range}}

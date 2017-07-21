@@ -1,0 +1,7 @@
+{{#modal-sheet as |sheet|}}
+  {{sheet.header label="When" hide=(action 'hide') reset=(action 'reset') }}
+
+  {{#sheet.body}}
+    {{datepicker-input range=range hide=(action 'hide')}}
+  {{/sheet.body}}
+{{/modal-sheet}}

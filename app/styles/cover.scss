@@ -69,30 +69,33 @@
 /**
  * iPad with portrait orientation.
  */
-@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+@media all         and
+  (width: 768px)   and 
+  (height: 1024px) and
+  (orientation:portrait) {
   .cover, .cover-inner {
-    height: 1024px;
     width: 768px;
+    height: 1024px;
   }
 }
 
 /**
  * iPad with landscape orientation.
  */
-@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+@media all and (width: 768px) and (height: 1024px) and (orientation:landscape){
   .cover, .cover-inner {
-    height: 1024px;
     width: 768px;
+    height: 1024px;
   }
 }
 
 /**
   * iPhone 6, 6s, 7
   */
-@media all and (device-width: 375px) and (device-height: 667px) {
+@media all and (width: 375px) and (height: 667px) {
   .cover, .cover-inner {
-    height: 667px;
     width: 375px;
+    height: 667px;
   }
 }
 
@@ -100,7 +103,7 @@
  * iPhone 5
  * You can also target devices with aspect ratio.
  */
-@media screen and (device-aspect-ratio: 40/71) {
+@media screen and (aspect-ratio: 40/71) {
   .cover, .cover-inner {
     height: 500px;
   }

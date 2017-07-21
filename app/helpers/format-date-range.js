@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
-export function dateRange(params) {
-  const start = params[0];
-  const end   = params[1];
-
+export function formatDateRange([start, end]) {
   if (!start || !end) { return '🤷‍'; }
 
   if (start.month() === end.month()) {
@@ -14,4 +11,4 @@ export function dateRange(params) {
   }
 }
 
-export default Ember.Helper.helper(dateRange);
+export default Ember.Helper.helper(formatDateRange);

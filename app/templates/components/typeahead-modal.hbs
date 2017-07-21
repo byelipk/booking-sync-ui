@@ -1,7 +1,7 @@
 {{#modal-sheet as |sheet|}}
   {{sheet.header label="What" hide=(action 'hide') reset=(action 'reset') }}
 
-  {{#sheet.body as |body|}}
+  {{#sheet.body}}
     <div class="p-3 w-100">
       {{typeahead-input
         selected=rental

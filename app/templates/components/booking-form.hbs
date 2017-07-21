@@ -28,7 +28,7 @@
   </div>
   <div class="booking-form-group">
     <label for="when">When</label>
-    {{datepicker-input range=range}}
+    {{datepicker-input range=range dropdown=true}}
   </div>
   <div class="booking-form-group">
     <label for="how-much">How much</label>
@@ -51,7 +51,9 @@
     </button>
   </div>
   <div class="booking-form-group">
-    <button {{action 'show' 'datepicker-modal'}} type="button" class="btn-block btn-lg">When</button>
+    <button {{action 'show' 'datepicker-modal'}} type="button" class="btn-block btn-lg">
+      When
+    </button>
   </div>
   <div class="booking-form-group">
     <button {{action 'show' 'invoice-modal'}} type="button" class="btn-block btn-lg">How much</button>
