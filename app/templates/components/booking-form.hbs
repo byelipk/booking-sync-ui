@@ -22,41 +22,41 @@
 
 {{!-- Large and extra large screens--}}
 <div class="large-screen">
-  <div class="search-form-group">
+  <div class="booking-form-group">
     <label for="what">What</label>
     {{typeahead-input selected=rental}}
   </div>
-  <div class="search-form-group">
+  <div class="booking-form-group">
     <label for="when">When</label>
     {{datepicker-input range=range}}
   </div>
-  <div class="search-form-group">
+  <div class="booking-form-group">
     <label for="how-much">How much</label>
     {{invoice-input rental=rental range=range}}
   </div>
-  <div class="search-form-group">
-    {{search-form-button submitTask=submitTask}}
+  <div class="booking-form-group">
+    {{booking-form-button submitTask=submitTask}}
   </div>
 </div>
 
 {{!-- Medium sized screens --}}
 <div class="medium-screen">
-  <div class="search-form-group">
+  <div class="booking-form-group">
     <button {{action 'show' 'typeahead-modal'}} type="button" class="btn-block btn-lg">What</button>
   </div>
-  <div class="search-form-group">
+  <div class="booking-form-group">
     <button {{action 'show' 'datepicker-modal'}} type="button" class="btn-block btn-lg">When</button>
   </div>
-  <div class="search-form-group">
+  <div class="booking-form-group">
     <button {{action 'show' 'invoice-modal'}} type="button" class="btn-block btn-lg">How much</button>
   </div>
-  <div class="search-form-group"></div>
+  <div class="booking-form-group"></div>
 </div>
 
 
 {{!-- Small sized screens --}}
 <div class="small-screen">
-  <div class="search-form-group">
+  <div class="booking-form-group">
     <button {{action 'show' 'dropdown-menu'}} type="button" class="btn-block btn-lg">What | When | How much</button>
   </div>
 </div>
@@ -110,9 +110,9 @@
   </div>
 
   <div class="form-item w-0 p-1 hidden-md-down">
-    {{search-form-button submitTask=submitTask}}
+    {{booking-form-button submitTask=submitTask}}
   </div> --}}
 
 {{!-- <div class="hidden-lg-up mt-3 pt-3">
-  {{search-form-button submitTask=submitTask}}
+  {{booking-form-button submitTask=submitTask}}
 </div> --}}

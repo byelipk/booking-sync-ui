@@ -3,7 +3,7 @@ import { task } from 'ember-concurrency';
 
 export default Ember.Component.extend({
   tagName: 'form',
-  classNames: ['search-form'],
+  classNames: ['booking-form'],
 
   store: Ember.inject.service(),
 

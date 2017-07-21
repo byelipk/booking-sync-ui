@@ -27,7 +27,7 @@ export default Ember.Component.extend({
   }).restartable(),
 
   calculatePosition() {
-    const target = document.querySelector('.search-form');
+    const target = document.querySelector('.booking-form');
     const measurements = target.getBoundingClientRect();
 
     return {

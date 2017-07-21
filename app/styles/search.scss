@@ -20,14 +20,14 @@
   @extend .hidden-sm-up;
 }
 
-.search-form {
+.booking-form {
   border: 1px solid $gray;
   border-radius: 4px;
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
 
-.search-form-group {
+.booking-form-group {
   @extend .px-2;
   @extend .py-2;
 
@@ -72,7 +72,7 @@
 .large-screen,
 .medium-screen {
 
-  .search-form-group {
+  .booking-form-group {
 
     &:last-child {
       @extend .d-flex;
