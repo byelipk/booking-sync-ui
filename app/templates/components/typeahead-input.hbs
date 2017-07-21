@@ -8,5 +8,5 @@
     calculatePosition=calculatePosition
     as |rental|}}
     <p>{{rental.name}}</p>
-    <span>${{rental.dailyRate}}</span>
+    <span>{{currency rental.dailyRate '$'}}</span>
 {{/power-select-typeahead}}
