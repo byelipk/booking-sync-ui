@@ -42,7 +42,13 @@
 {{!-- Medium sized screens --}}
 <div class="medium-screen">
   <div class="booking-form-group">
-    <button {{action 'show' 'typeahead-modal'}} type="button" class="btn-block btn-lg">What</button>
+    <button {{action 'show' 'typeahead-modal'}} type="button" class="btn-block btn-lg">
+      {{#if rental.name}}
+        {{rental.name}}
+      {{else}}
+        What
+      {{/if}}
+    </button>
   </div>
   <div class="booking-form-group">
     <button {{action 'show' 'datepicker-modal'}} type="button" class="btn-block btn-lg">When</button>

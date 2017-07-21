@@ -1,25 +1,3 @@
-.base-screen {
-  @extend .d-flex;
-  @extend .flex-row;
-  @extend .align-items-center;
-}
-
-.large-screen {
-  @extend .base-screen;
-  @extend .hidden-md-down;
-}
-
-.medium-screen {
-  @extend .base-screen;
-  @extend .hidden-lg-up;
-  @extend .hidden-xs-down;
-}
-
-.small-screen {
-  @extend .base-screen;
-  @extend .hidden-sm-up;
-}
-
 .booking-form {
   border: 1px solid $gray;
   border-radius: 4px;
@@ -82,5 +60,11 @@
 
       border-right: none;
     }
+  }
+}
+
+.medium-screen {
+  .booking-form-group {
+    @extend .d-flex;
   }
 }
