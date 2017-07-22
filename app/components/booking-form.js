@@ -38,7 +38,26 @@ export default Ember.Component.extend({
   },
 
   submit(evt) {
+    // Prevent form from submitting
     evt.preventDefault();
+
+    // Ask user for email address and fetch the
+    // rental relationship and the check-in/check-out dates.
+    const rental  = this.get('rental');
+    const range   = this.get('range');
+
+    // Save if valid, otherwise show error
+    if (this._isValid({rental: rental, range: range, skip_email: true})) {
+      const email   = window.prompt("What is your email?");
+
+      if (this._isValid({skip_rental: true, skip_range: true, email: email})) {
+        const booking = this._createBooking(rental, range, email);
+        this.get('submitTask').perform(booking);
+      }
+    }
+    else {
+      alert("Something went wrong validating the booking. 😦");
+    }
   },
 
   submitTask: task(function * (booking) {
@@ -80,114 +99,42 @@ export default Ember.Component.extend({
       rental: null,
       range: null
     });
+  },
+
+  _createBooking(rental, range, email) {
+    return this.get('store').createRecord('booking', {
+      rental: rental,
+      clientEmail: email,
+      startAt: range.start,
+      endAt: range.end
+    });
+  },
+
+  _isValid(options={}) {
+    const rental = options["rental"];
+    const range  = options["range"];
+    const email  = options["email"];
+
+    if (!options["skip_rental"]) {
+      if (!rental)           { this._alert("No rental. 😫"); }
+    }
+
+    if (!options["skip_range"]) {
+      if (!range)            { this._alert("No rental dates. 😫"); }
+      if (!range.start)      { this._alert("No check in date. 😫"); }
+      if (!range.end)        { this._alert("No check out date. 😫"); }
+    }
+
+    if (!options["skip_email"]) {
+      if (!email)            { this._alert("No email. 😫"); }
+      if (!email.match(/@/)) { this._alert("Weird email address. 😫"); }
+    }
+
+    return true;
+  },
+
+  _alert(message) {
+    window.alert(message);
+    throw new Error(message);
   }
 });
-
-
-    // const rental  = this.get('rental');
-    // const range   = this.get('range');
-    // const email   = window.prompt("What is your email?");
-    //
-    // if (this._validate(rental, range, email)) {
-    //   const booking = this._createBooking(rental, range, email);
-    //   this.get('submitTask').perform(booking);
-    // }
-    // else {
-    //   alert("Something went wrong validating the booking. 😦");
-    // }
-
-//
-// _validate(rental, range, email) {
-//   if (rental && range && range.start && range.end) {
-//     if (!email.match(/@/)) {
-//       return false;
-//     }
-//     else {
-//       return true;
-//     }
-//   }
-//   else {
-//     return false;
-//   }
-// },
-//
-// _createBooking(rental, range, email) {
-//   return this.get('store').createRecord('booking', {
-//     startAt: range.start.toDate(),
-//     endAt: range.end.toDate(),
-//     price: Number.parseFloat(this.get('rentalCost')),
-//     clientEmail: email,
-//     rental: rental
-//   });
-// },
-//
-// // This property tracks the type of component
-// // we will render into the modal
-// modalWindow: null,
-//
-// rentalName: Ember.computed('rental', function() {
-//   const rental = this.get('rental');
-//
-//   if (rental && rental.get('name')) {
-//     return rental.get('name');
-//   }
-//   else {
-//     return '';
-//   }
-// }),
-//
-// dateRange: Ember.computed('range', function() {
-//   const range = this.get('range');
-//
-//   if (!range || !range.start || !range.end) { return ''; }
-//
-//   if (range.start.month() === range.end.month()) {
-//     return `${range.start.format("MMM DD")} - ${range.end.format("DD")}`;
-//   }
-//   else {
-//     return `${range.start.format("MMM DD")} - ${range.end.format("MMM DD")}`;
-//   }
-// }),
-//
-// rentalCost: Ember.computed('rental', 'range', function() {
-//   const rental = this.get('rental');
-//   const range = this.get('range');
-//
-//   if (!range       ||
-//       !range.start ||
-//       !range.end   ||
-//       !rental      ||
-//       !rental.get('dailyRate')) { return ''; }
-//
-//   const daysInRange = range.end.diff(range.start, 'days');
-//   const dailyPrice  = Number.parseFloat(rental.get('dailyRate'));
-//
-//   return daysInRange * dailyPrice;
-// }),
-//
-// rentalNameString: Ember.computed('rentalName', function() {
-//   const rentalName = this.get('rentalName');
-//
-//   if (!rentalName) {
-//     return 'Anything';
-//   }
-//   else {
-//     if (rentalName.length > 10) {
-//       return rentalName.substr(0, 10) + `...`;
-//     }
-//     else {
-//       return rentalName;
-//     }
-//   }
-// }),
-//
-// dateRangeString: Ember.computed('dateRange', function() {
-//   const dateRange = this.get('dateRange');
-//
-//   if (!dateRange) {
-//     return 'Anytime';
-//   }
-//   else {
-//     return dateRange;
-//   }
-// })
