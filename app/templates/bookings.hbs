@@ -31,7 +31,10 @@
   <div class="row">
     <div class="d-flex flex-row flex-nowrap horizontal-scroll w-100">
       {{#each model as |booking|}}
-        {{booking-card booking=booking}}
+        {{booking-card
+          booking=booking
+          onDelete=(action 'delete')
+          onUpdate=(action 'update')}}
       {{/each}}
     </div>
   </div>
