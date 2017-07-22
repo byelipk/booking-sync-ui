@@ -1,3 +1,7 @@
-<div class="p-3 w-100">
-  <button {{action 'save'}} type="button" class="btn-block btn-lg btn-marketing">Save</button>
+<div class="p-3 w-100 text-center">
+  {{#if hasBlock}}
+    {{yield}}
+  {{else}}
+    <button {{action 'save'}} type="button" class="btn-block btn-lg btn-marketing">Save</button>
+  {{/if}}
 </div>

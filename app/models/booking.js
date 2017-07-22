@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -6,5 +7,12 @@ export default DS.Model.extend({
   clientEmail: DS.attr('string'),
   price:       DS.attr('string'),
 
-  rental: DS.belongsTo('rental')
+  rental: DS.belongsTo('rental'),
+
+  range: Ember.computed('startAt', 'endAt', function() {
+    return {
+      start: this.get('startAt'),
+      end: this.get('endAt')
+    };
+  })
 });

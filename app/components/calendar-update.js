@@ -8,33 +8,29 @@ export default Ember.Component.extend(TransitionMixin, NotScrollable, {
   transitionClass: 'slide-from-bottom',
   classNames: ['cover'],
 
-  range: {},
-
-  init() {
-    this._super(...arguments);
-
-    const booking = this.get('booking');
-    const range   = this.get('range');
-
-    range.start = booking.get('startAt');
-    range.end   = booking.get('endAt');
-
-    this.set('range', range);
-  },
-
   actions: {
     hide() {
-      this.get('hide')(this.get('range'));
-    },
-    update() {
       const booking = this.get('booking');
-      const range   = this.get('range');
+
+      booking.rollbackAttributes();
+      this.get('hide')(booking);
+    },
+
+    reset() {
+      this.get('booking').rollbackAttributes();
+    },
+
+    updateRange(_rental, range) {
+      const booking = this.get('booking');
 
       booking.setProperties({
         startAt: range.start,
         endAt: range.end
       });
+    },
 
+    save() {
+      const booking = this.get('booking');
       this.get('updateTask').perform(booking);
     }
   },

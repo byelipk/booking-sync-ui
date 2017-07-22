@@ -27,16 +27,5 @@ export default Ember.Component.extend({
   },
 
   today: moment(),
-  yesterday: moment().add(-1, 'days'),
-
-  dateRange: Ember.computed('range', function() {
-    const range = this.get('range');
-
-    if (!range || !range.start || !range.end) { return ''; }
-
-    const start = range.start.format("MMM DD");
-    const end = range.end.format("MMM DD");
-
-    return `${start} - ${end}`;
-  })
+  yesterday: moment().add(-1, 'days')
 });
