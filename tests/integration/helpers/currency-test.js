@@ -8,10 +8,10 @@ moduleForComponent('currency', 'helper:currency', {
 
 // Replace this with your real tests.
 test('it renders', function(assert) {
-  this.set('inputValue', '1234');
+  this.set('amount', '120.00');
+  this.set('sign', '$');
+  
+  this.render(hbs`{{currency amount sign}}`);
 
-  this.render(hbs`{{currency inputValue}}`);
-
-  assert.equal(this.$().text().trim(), '1234');
+  assert.equal(this.$().text().trim(), '$120');
 });
-
