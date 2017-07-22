@@ -31,20 +31,7 @@
   <div class="row">
     <div class="d-flex flex-row flex-nowrap horizontal-scroll w-100">
       {{#each model as |booking|}}
-        <div class="col-12 col-md-6 col-lg-3">
-          <div class="card h-100">
-            {{!-- <img class="card-img-top img-fluid" src="{{booking.rental.imgUrl}}"> --}}
-            <div class="card-block">
-              <h5 class="card-title">{{booking.rental.name}}</h5>
-              <p class="card-text">{{format-date-range booking.startAt booking.endAt}}</p>
-              <p class="card-text">{{booking.clientEmail}}</p>
-            </div>
-            <div class="p-3">
-              <button {{action 'delete' booking}} type="button" name="button" class="mr-3">Delete</button>
-              <button {{action 'update' booking}} type="button" name="button">Change Dates</button>
-            </div>
-          </div>
-        </div>
+        {{booking-card booking=booking}}
       {{/each}}
     </div>
   </div>

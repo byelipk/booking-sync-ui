@@ -1,0 +1,12 @@
+<div class="card h-100">
+  {{!-- <img class="card-img-top img-fluid" src="{{booking.rental.imgUrl}}"> --}}
+  <div class="card-block">
+    <h5 class="card-title">{{booking.rental.name}}</h5>
+    <p class="card-text">{{format-date-range booking.startAt booking.endAt}}</p>
+    <p class="card-text">{{booking.clientEmail}}</p>
+  </div>
+  <div class="p-3">
+    <button {{action 'delete' booking}} type="button" name="button" class="mr-3">Delete</button>
+    <button {{action 'update' booking}} type="button" name="button">Change Dates</button>
+  </div>
+</div>
