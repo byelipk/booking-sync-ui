@@ -6,20 +6,16 @@ moduleForComponent('call-out', 'Integration | Component | call out', {
 });
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{call-out}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
+  assert.expect(2);
+  
   // Template block usage:
   this.render(hbs`
-    {{#call-out}}
-      template block text
+    {{#call-out as |header|}}
+      {{header.title text="Hello"}}
+      {{header.subtitle text="World"}}
     {{/call-out}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('h1').text().trim(), 'Hello');
+  assert.equal(this.$('p').text().trim(), 'World');
 });
