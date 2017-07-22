@@ -4,16 +4,14 @@ import moment from 'moment';
 import Ember from 'ember';
 
 // Setup data
-const now = moment();
-
 const Rental = Ember.Object.extend({
   name: "My booking"
 });
 
 const Booking = Ember.Object.extend({
   rental: Rental.create(),
-  startAt: now,
-  endAt: now.add(1, 'days'),
+  startAt: moment(),
+  endAt: moment().add(1, 'days'),
   clientEmail: "hello@world.com"
 });
 
