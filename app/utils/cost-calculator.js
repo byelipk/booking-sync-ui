@@ -5,8 +5,8 @@ export default function costCalculator(rental, range) {
       !rental      ||
       !rental.get('dailyRate')) { return; }
 
-  const daysInRange = range.end.diff(range.start, 'days');
-  const dailyPrice  = Number.parseFloat(rental.get('dailyRate'));
+  const days = range.end.diff(range.start, 'days');
+  const rate = parseFloat(rental.get('dailyRate'));
 
-  return daysInRange * dailyPrice;
+  return days * rate;
 }
