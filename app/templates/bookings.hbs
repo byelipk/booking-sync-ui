@@ -6,12 +6,16 @@
         hide=(action 'update')) }}
 {{/if}}
 
-{{#call-out as |header|}}
-  {{header.title text="BookSync (Bookings)"}}
-  {{header.subtitle text="Did someone else already book a timeslot you wanted? Just delete it. 😃"}}
-{{/call-out}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-7">
+      {{#call-out as |header|}}
+        {{header.title text="BookSync (Bookings)"}}
+        {{header.subtitle text="Did someone else already book a timeslot you wanted? Just delete it. 😃"}}
+      {{/call-out}}
+    </div>
+  </div>
 
-<section class="container">
   <div class="row">
     <div class="col-12">
       <h5>
@@ -44,4 +48,4 @@
       {{/each}}
     </div>
   </div>
-</section>
+</div>
