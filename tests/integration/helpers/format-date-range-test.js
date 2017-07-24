@@ -9,10 +9,12 @@ const Rental = Ember.Object.extend({
   name: "My booking"
 });
 
+const TODAY = "2017-07-22";
+
 const Booking = Ember.Object.extend({
   rental: Rental.create(),
-  startAt: moment(),
-  endAt: moment().add(1, 'days'),
+  startAt: moment(TODAY),
+  endAt: moment(TODAY).add(1, 'days'),
   clientEmail: "hello@world.com"
 });
 
@@ -34,7 +36,7 @@ test('when check-in and check-out are the same month', function(assert) {
 
 test('when check-in and check-out are different months', function(assert) {
   const booking = Booking.create({
-    endAt: moment().add('1', 'month')
+    endAt: moment(TODAY).add('1', 'month')
   });
 
   this.set('start', booking.get('startAt'));
