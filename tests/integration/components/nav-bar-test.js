@@ -6,20 +6,25 @@ moduleForComponent('nav-bar', 'Integration | Component | nav bar', {
 });
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  assert.expect(6);
 
   this.render(hbs`{{nav-bar}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('a.navbar-brand').length, 1,
+    "Expected an anchor tag with class navbar-brand");
 
-  // Template block usage:
-  this.render(hbs`
-    {{#nav-bar}}
-      template block text
-    {{/nav-bar}}
-  `);
+  assert.equal(this.$('a.navbar-brand').text().trim(), 'LOGO',
+    "Expected text to be LOGO, but it was not.");
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('li a').length, 3,
+    "Expected 3 nested anchor elements.");
+
+  assert.equal(this.$('li a')[0].text, "Search",
+    "Expected a link to the search page.");
+
+  assert.equal(this.$('li a')[1].text, "Rentals",
+    "Expected a link to the rentals page.");
+
+  assert.equal(this.$('li a')[2].text, "Bookings",
+    "Expected a link to the bookings page.");
 });
