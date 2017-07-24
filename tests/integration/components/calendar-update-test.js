@@ -1,25 +1,35 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import moment from 'moment';
+
+const Rental = Ember.Object.extend({
+  name: "My rental",
+  dailyRate: "100"
+});
+
+const Booking = Ember.Object.extend({
+  start: moment(),
+  endAt: moment().add(3, 'days'),
+  rental: Rental.create()
+});
 
 moduleForComponent('calendar-update', 'Integration | Component | calendar update', {
   integration: true
 });
 
 test('it renders', function(assert) {
+  assert.expect(6);
+  
+  this.set('booking', Booking.create());
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.render(hbs`{{calendar-update booking=booking}}`);
 
-  this.render(hbs`{{calendar-update}}`);
+  assert.equal(this.$('header').length, 1);
+  assert.equal(this.$('section').length, 1);
+  assert.equal(this.$('footer').length, 1);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#calendar-update}}
-      template block text
-    {{/calendar-update}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('header strong').text().trim(), "When");
+  assert.equal(this.$('.calendar').length, 1);
+  assert.equal(this.$('footer button').text().trim(), "Update");
 });
