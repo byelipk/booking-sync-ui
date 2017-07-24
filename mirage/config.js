@@ -6,8 +6,13 @@ export default function() {
   this.namespace = '/api/v1';    // make this `/api`, for example, if your API is namespaced
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
-  this.get('/bookings', () => {
-    return BOOKINGS;
+  this.get('/bookings', (schema) => {
+    return schema.bookings.all();
+  });
+
+  this.post('/bookings', (schema, request) => {
+    const attrs = JSON.parse(request.requestBody);
+    return schema.bookings.create(attrs);
   });
 
   this.get('rentals', (db, request) => {
@@ -21,9 +26,11 @@ export default function() {
     else {
       return RENTALS;
     }
-  })
+  });
 
-  this.passthrough();
+
+
+  // this.passthrough();
 }
 
 
@@ -139,26 +146,3 @@ const RENTALS = {
     }
   ]
 };
-
-const BOOKINGS = {
-  "data": [
-    {
-      "id": "12",
-      "type": "bookings",
-      "attributes": {
-        "start_at": "2017-07-23T00:00:00.000Z",
-        "end_at": "2017-07-25T00:00:00.000Z",
-        "client_email": "example@email.com",
-        "price": "100.0"
-      },
-      "relationships": {
-        "rental": {
-          "data": {
-            "id": "6",
-            "type": "rentals"
-          }
-        }
-      }
-    }
-  ]
-}

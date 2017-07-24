@@ -3,6 +3,8 @@ module.exports = {
     embertest: true
   },
   globals: {
-    "$": true
+    "$": true,
+    "clickDropdown": true,
+    "calendarSelect": true
   }
 };
