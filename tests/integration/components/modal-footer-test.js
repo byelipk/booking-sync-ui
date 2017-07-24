@@ -6,13 +6,9 @@ moduleForComponent('modal-footer', 'Integration | Component | modal footer', {
 });
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{modal-footer}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('button').length, 1, 'Expected a button');
 
   // Template block usage:
   this.render(hbs`
@@ -22,4 +18,14 @@ test('it renders', function(assert) {
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');
+});
+
+test('clicking the button rendered by default triggers the save action', function(assert) {
+  this.set('save', function() {
+    assert.ok(true);
+  });
+
+  this.render(hbs`{{modal-footer save=(action save)}}`);
+
+  this.$('button').click();
 });
