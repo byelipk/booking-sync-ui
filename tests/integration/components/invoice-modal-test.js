@@ -1,25 +1,38 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+
+import moment from 'moment';
 
 moduleForComponent('invoice-modal', 'Integration | Component | invoice modal', {
   integration: true
 });
 
+const Rental = Ember.Object.extend({
+  name: "My Rental",
+  dailyRate: "100"
+});
+
 test('it renders', function(assert) {
+  this.set('rental', Rental.create());
+  this.set('range', {start: moment(), end: moment().add(1, 'day')});
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.render(hbs`{{invoice-modal rental=rental range=range}}`);
 
-  this.render(hbs`{{invoice-modal}}`);
+  assert.equal(this.$('.cover-inner').length, 1,
+    "Expected to render modal-sheet with class .cover-inner");
+});
 
-  assert.equal(this.$().text().trim(), '');
+test('the hide action is invoked properly', function(assert) {
+  this.set('rental', Rental.create());
+  this.set('range', {start: moment(), end: moment().add(1, 'day')});
 
-  // Template block usage:
-  this.render(hbs`
-    {{#invoice-modal}}
-      template block text
-    {{/invoice-modal}}
-  `);
+  this.set('myHide', (rental, range) => {
+    assert.equal(rental, this.get('rental'));
+    assert.equal(range, this.get('range'));
+  });
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.render(hbs`{{invoice-modal rental=rental range=range hide=(action myHide)}}`);
+
+  this.$('header button:first-child').click();
 });
