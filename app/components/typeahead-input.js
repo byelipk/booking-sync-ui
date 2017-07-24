@@ -26,8 +26,11 @@ export default Ember.Component.extend({
     });
   }).restartable(),
 
-  calculatePosition() {
-    const target = document.querySelector('.booking-form');
+  // See: https://www.ember-basic-dropdown.com/docs/custom-position
+  calculatePosition(trigger) {
+    let target = document.querySelector('.booking-form');
+    if (!target) { target = trigger; }
+
     const measurements = target.getBoundingClientRect();
 
     return {
@@ -37,5 +40,5 @@ export default Ember.Component.extend({
         width: measurements.width
       }
     };
-  },
+  }
 });
