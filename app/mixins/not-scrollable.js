@@ -4,10 +4,16 @@ export default Ember.Mixin.create({
   el: document.querySelector('.overflow-wrapper'),
 
   addNoScrollClass: Ember.on('didInsertElement', function() {
-    this.get('el').classList.add('no-scroll');
+    const el = this.get('el');
+    if (el && el.classList) {
+      el.classList.add('no-scroll');
+    }
   }),
 
   removeNoScrollClass: Ember.on('willDestroyElement', function() {
-    this.get('el').classList.remove('no-scroll');
+    const el = this.get('el');
+    if (el && el.classList) {
+      el.classList.remove('no-scroll');
+    }
   }),
 });
