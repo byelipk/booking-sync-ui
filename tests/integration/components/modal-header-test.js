@@ -5,21 +5,30 @@ moduleForComponent('modal-header', 'Integration | Component | modal header', {
   integration: true
 });
 
-test('it renders', function(assert) {
+test('it renders the label properly', function(assert) {
+  this.set('label', 'My Label');
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.render(hbs`{{modal-header label=label}}`);
 
-  this.render(hbs`{{modal-header}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#modal-header}}
-      template block text
-    {{/modal-header}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('strong').text().trim(), "My Label");
 });
+
+test('clicking button on the left triggers the hide action', function(assert) {
+  this.set('hide', function() {
+    assert.ok('true', "Action `hide` not handled!");
+  });
+
+  this.render(hbs`{{modal-header hide=(action hide)}}`);
+
+  this.$('button:first-child').click();
+});
+
+test('clicking button on the right triggers the reset action', function(assert) {
+  this.set('reset', function() {
+    assert.ok('true', "Action `reset` not handled!");
+  });
+
+  this.render(hbs`{{modal-header reset=(action reset)}}`);
+
+  this.$('button:last-child').click();
+})
