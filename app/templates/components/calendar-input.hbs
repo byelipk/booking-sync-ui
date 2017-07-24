@@ -3,8 +3,7 @@
     selected=range
     class=calendarClass
     onCenterChange=(action (mut center) value="date")
-    onSelect=(action 'updateRange') as |cal|}}
-    {{!-- onSelect=(action (mut range) value="moment") as |cal|}} --}}
+    onSelect=(action onSelect) as |cal|}}
 
     {{!-- Calendar navigation --}}
     <nav class="ember-power-calendar-nav py-3">
