@@ -6,20 +6,37 @@ moduleForComponent('submit-button', 'Integration | Component | submit button', {
 });
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  assert.expect(1);
 
   this.render(hbs`{{submit-button}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('button[type="submit"]').length, 1,
+    "Expected 1 button, but there were none.");
+});
 
-  // Template block usage:
+test('it displays proper text when task is idle', function(assert) {
+  assert.expect(1);
+
+  this.set('idle', 'Click me');
+  this.set('submitTaskMock', { isIdle: true });
+
+  this.render(hbs`{{submit-button idleText=idle submitTask=submitTaskMock}}`);
+
+  assert.equal(this.$('button[type="submit"]').text().trim(), 'Click me');
+});
+
+test('it displays proper text when task is running', function(assert) {
+  assert.expect(1);
+
+  this.set('idle', 'Click me');
+  this.set('running', 'Doing work...');
+  this.set('submitTaskMock', { isIdle: false });
+
   this.render(hbs`
-    {{#submit-button}}
-      template block text
-    {{/submit-button}}
-  `);
+    {{submit-button
+      idleText=idle
+      runningText=running
+      submitTask=submitTaskMock}}`);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('button[type="submit"]').text().trim(), 'Doing work...');
 });
