@@ -23,11 +23,9 @@
 </div>
 
 <div class="form-group">
-  <button type="submit" class="btn btn-block btn-marketing btn-lg">
-    {{#if submitTask.isIdle}}
-      Put my rental on the market
-    {{else}}
-      Saving...
-    {{/if}}
-  </button>
+  {{submit-button
+    class="btn btn-lg btn-marketing"
+    submitTask=submitTask
+    idleText="Add rental to marketplace"
+    runningText="Saving..."}}
 </div>

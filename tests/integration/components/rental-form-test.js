@@ -6,20 +6,16 @@ moduleForComponent('rental-form', 'Integration | Component | rental form', {
 });
 
 test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  assert.expect(3);
 
   this.render(hbs`{{rental-form}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$('input[type="text"]').length, 1,
+    'Expected a text input, but it was not found.');
 
-  // Template block usage:
-  this.render(hbs`
-    {{#rental-form}}
-      template block text
-    {{/rental-form}}
-  `);
+  assert.equal(this.$('input[type="number"]').length, 1,
+    'Expected a number input, but it was not found.');
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('button').length, 1,
+    'Expected a submit button, but it was not found.');
 });
