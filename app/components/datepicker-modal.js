@@ -7,6 +7,9 @@ export default Ember.Component.extend(TransitionMixin, {
 
   actions: {
     hide(rental, range) {
+      if (!rental) { rental = this.get('rental'); }
+      if (!range)  { range = this.get('range'); }
+
       this.get('hide')(rental, range);
     },
     reset() {
