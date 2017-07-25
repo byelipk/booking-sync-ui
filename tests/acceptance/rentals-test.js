@@ -3,7 +3,7 @@ import moduleForAcceptance from 'client/tests/helpers/module-for-acceptance';
 
 let originalAlert;
 
-moduleForAcceptance('Acceptance | create rental', {
+moduleForAcceptance('Acceptance | rentals', {
   beforeEach() {
     originalAlert = window.alert;
   },
@@ -12,7 +12,7 @@ moduleForAcceptance('Acceptance | create rental', {
   }
 });
 
-test('it works', function(assert) {
+test('create - it works', function(assert) {
   window.alert = (message) => {
     assert.equal("Rental saved! 😎", message);
   }
@@ -36,7 +36,7 @@ test('it works', function(assert) {
   });
 });
 
-test('name must be present', function(assert) {
+test('create - name must be present', function(assert) {
   window.alert = (message) => {
     assert.equal("No name. 😕", message);
   }
@@ -55,7 +55,7 @@ test('name must be present', function(assert) {
   });
 });
 
-test('name cannot be more than 40 characters', function(assert) {
+test('create - name cannot be more than 40 characters', function(assert) {
   window.alert = (message) => {
     assert.equal("Name is too long. 😕", message);
   }
@@ -78,7 +78,7 @@ test('name cannot be more than 40 characters', function(assert) {
   });
 });
 
-test('dailyRate must be a number', function(assert) {
+test('create - dailyRate must be a number', function(assert) {
   window.alert = (message) => {
     assert.equal("No rate. 😕", message);
   }
@@ -97,7 +97,7 @@ test('dailyRate must be a number', function(assert) {
   });
 });
 
-test('dailyRate must be greater than or equal to zero', function(assert) {
+test('create - dailyRate must be greater than or equal to zero', function(assert) {
   assert.expect(2);
 
   visit('/rentals');
@@ -112,7 +112,7 @@ test('dailyRate must be greater than or equal to zero', function(assert) {
   });
 });
 
-test('dailyRate cannot be more than 10 characters', function(assert) {
+test('create - dailyRate cannot be more than 10 characters', function(assert) {
   assert.expect(2);
 
   visit('/rentals');
