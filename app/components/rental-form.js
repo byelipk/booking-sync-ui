@@ -8,34 +8,38 @@ export default Ember.Component.extend({
   classNames: ['rental-form'],
 
   focusOnInsert: Ember.on('didInsertElement', function() {
-    this.focus();
+    this._focus();
   }),
 
   submit(evt) {
     evt.preventDefault();
 
     const name = this.get('rentalName');
-    const dailyRate = this.get('dailyRate');
+    const rate = this.get('dailyRate');
 
-    if (this._validate(name, dailyRate)) {
-      const rental = this._createRental(name, dailyRate);
+    if (this._isValid({name: name, rate: rate})) {
+      const rental = this._createRental(name, rate);
       this.get('submitTask').perform(rental);
-    }
-    else {
-      alert("Something went wrong validating the rental. 😦");
     }
   },
 
-  _validate(name, dailyRate) {
-    if (!name || name.length > 40) {
-      return false;
-    }
+  submitTask: task(function * (rental) {
+    try {
+      yield rental.save();
 
-    if (!dailyRate || dailyRate <= 0 && isNaN(parseInt(dailyRate, 10))) {
-      return false;
-    }
+      alert("Rental saved! 😎");
 
-    return true;
+      this.set('rentalName', null);
+      this.set('dailyRate', null);
+
+      this._focus();
+    } catch (e) {
+      e.errors.forEach(error => alert(error.detail));
+    }
+  }).drop(),
+
+  _focus() {
+    document.querySelector('input[type="text"]').focus();
   },
 
   _createRental(name, dailyRate) {
@@ -45,19 +49,33 @@ export default Ember.Component.extend({
     });
   },
 
-  submitTask: task(function * (rental) {
-    try {
-      yield rental.save();
-      alert("Rental saved! 😎");
-      this.set('rentalName', null);
-      this.set('dailyRate', null);
-      this.focus();
-    } catch (e) {
-      e.errors.forEach(error => alert(error.detail));
-    }
-  }).drop(),
+  _isValid(options={}) {
+    const name = options["name"];
+    const rate = options["rate"];
 
-  focus() {
-    document.querySelector('input[type="text"]').focus();
+    if (!options["skip_name"]) {
+      if (!name)            { return this._alert("No name. 😕"); }
+      if (name.length > 40) { return this._alert("Name is too long. 😕"); }
+    }
+
+    if (!options["skip_rate"]) {
+      if (!rate)                     { return this._alert("No rate. 😕"); }
+      if (isNaN(parseInt(rate, 10))) { return this._alert("No rate. 😕"); }
+      if (rate <= 0)                 { return this._alert("That's not fair to you. 😕"); }
+      if (rate.length > 10)          { return this._alert("No one will pay that. 😯"); }
+    }
+
+    return true;
+  },
+
+  _alert(message) {
+    window.alert(message);
+
+    if (!Ember.testing) {
+      throw new Error(message);
+    }
+    else {
+      return false;
+    }
   }
 });
