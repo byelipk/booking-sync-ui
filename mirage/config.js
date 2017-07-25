@@ -15,6 +15,9 @@ export default function() {
     return schema.bookings.create(attrs);
   });
 
+  this.del('/bookings/:id');
+  this.patch('/bookings/:id');
+
   this.post('/rentals', (schema, request) => {
     const attrs = JSON.parse(request.requestBody);
     return schema.rentals.create(attrs);

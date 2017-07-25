@@ -27,12 +27,12 @@ export default Ember.Component.extend({
       }
     },
 
-    hide(modal, rental, range) {
+    hide(modal) {
       if (modal === 'dropdown-menu') {
         this._hideDropdownMenu();
       }
       else {
-        this._hideModal(modal, rental, range);
+        this._hideModal(...arguments);
       }
     }
   },
@@ -47,16 +47,13 @@ export default Ember.Component.extend({
     const range   = this.get('range');
 
     // Save if valid, otherwise show error
-    if (this._isValid({rental: rental, range: range, skip_email: true})) {
-      const email   = window.prompt("What is your email?");
+    if (this._isValid({ rental: rental, range: range, skip_email: true })) {
+      const email = window.prompt("What is your email?");
 
       if (this._isValid({skip_rental: true, skip_range: true, email: email})) {
         const booking = this._createBooking(rental, range, email);
         this.get('submitTask').perform(booking);
       }
-    }
-    else {
-      alert("Something went wrong validating the booking. 😦");
     }
   },
 
@@ -116,18 +113,18 @@ export default Ember.Component.extend({
     const email  = options["email"];
 
     if (!options["skip_rental"]) {
-      if (!rental)           { this._alert("No rental. 😫"); }
+      if (!rental)           { return this._alert("No rental. 😫"); }
     }
 
     if (!options["skip_range"]) {
-      if (!range)            { this._alert("No rental dates. 😫"); }
-      if (!range.start)      { this._alert("No check in date. 😫"); }
-      if (!range.end)        { this._alert("No check out date. 😫"); }
+      if (!range)            { return this._alert("No rental dates. 😫"); }
+      if (!range.start)      { return this._alert("No check in date. 😫"); }
+      if (!range.end)        { return this._alert("No check out date. 😫"); }
     }
 
     if (!options["skip_email"]) {
-      if (!email)            { this._alert("No email. 😫"); }
-      if (!email.match(/@/)) { this._alert("Weird email address. 😫"); }
+      if (!email)            { return this._alert("No email. 😫"); }
+      if (!email.match(/@/)) { return this._alert("Weird email address. 😫"); }
     }
 
     return true;
@@ -135,6 +132,6 @@ export default Ember.Component.extend({
 
   _alert(message) {
     window.alert(message);
-    throw new Error(message);
+    return false;
   }
 });
