@@ -34,18 +34,14 @@ test('it works', function(assert) {
 
   fillIn('.ember-power-select-typeahead-input', 'Red Sox');
 
-  andThen(() => {
-    click(find(".ember-power-select-option"));
-  });
+  click(".ember-power-select-option");
 
   clickDropdown('.datepicker');
 
   calendarSelect('.calendar', moment().add(30, 'days'));
   calendarSelect('.calendar', moment().add(33, 'days'));
 
-  andThen(() => {
-    click("button[type='submit']");
-  });
+  click("button[type='submit']");
 
   andThen(() => {
     assert.equal(find(".ember-power-select-typeahead-input").val(), "");
