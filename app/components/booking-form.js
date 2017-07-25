@@ -64,9 +64,10 @@ export default Ember.Component.extend({
     validations = model.validate({email: true});
     if (!validations.valid) { return this._alert(validations.message); }
 
-    const booking = this._createBooking(
-      model.getProperties('rental', 'start', 'end', 'email'));
+    // Create a ember data model
+    const booking = this._createBooking(model);
 
+    // Handle the POST request in a task
     this.get('submitTask').perform(booking);
   },
 
@@ -100,7 +101,10 @@ export default Ember.Component.extend({
     this.set('model', BookingForm.create());
   },
 
-  _createBooking({rental, start, end, email}) {
+  _createBooking(model) {
+    const { rental, start, end, email } =
+      model.getProperties('rental', 'start', 'end', 'email');
+
     return this.get('store').createRecord('booking', {
       rental: rental,
       clientEmail: email,
