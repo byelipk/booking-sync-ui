@@ -37,20 +37,24 @@ export default Ember.Object.extend({
     }
   }),
 
-  validate(options={}) {
+  validate(options) {
+    if (!options || typeof options !== "object") {
+      options = { all: true };
+    }
+
     const { rental, start, end, email } =
       this.getProperties("rental", "start", "end", "email");
 
-    if (!options["skip_rental"]) {
+    if (options["rental"] || options["all"]) {
       if (!rental)           { return this._alert("No rental. 😫"); }
     }
 
-    if (!options["skip_range"]) {
+    if (options["range"] || options["all"]) {
       if (!start)      { return this._alert("No check-in date. 😫"); }
       if (!end)        { return this._alert("No check-out date. 😫"); }
     }
 
-    if (!options["skip_email"]) {
+    if (options["email"] || options["all"]) {
       if (!email)            { return this._alert("No email. 😫"); }
       if (!email.match(/@/)) { return this._alert("Weird email address. 😫"); }
     }

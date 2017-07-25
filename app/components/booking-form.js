@@ -49,12 +49,12 @@ export default Ember.Component.extend({
 
     const model = this.get('model');
 
-    let validations = model.validate({skip_email: true});
+    let validations = model.validate({rental: true, range: true});
     if (!validations.valid) { return this._alert(validations.message); }
 
     model.set('email', window.prompt("What is your email?"));
 
-    validations = model.validate({skip_rental: true, skip_range: true});
+    validations = model.validate({email: true});
     if (!validations.valid) { return this._alert(validations.message); }
 
     const booking = this._createBooking(

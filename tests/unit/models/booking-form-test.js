@@ -25,6 +25,8 @@ test('it calculates cost', function(assert) {
 });
 
 test('it validates presence of rental', function(assert) {
+  assert.expect(2);
+
   const form = this.subject();
 
   form.set('start', moment());
@@ -39,6 +41,8 @@ test('it validates presence of rental', function(assert) {
 });
 
 test('it validates presence of email', function(assert) {
+  assert.expect(2);
+
   const form = this.subject();
 
   form.set('start', moment());
@@ -53,6 +57,8 @@ test('it validates presence of email', function(assert) {
 });
 
 test('it validates format of email', function(assert) {
+  assert.expect(2);
+
   const form = this.subject();
 
   form.set('start', moment());
@@ -67,6 +73,8 @@ test('it validates format of email', function(assert) {
 });
 
 test('it validates start date', function(assert) {
+  assert.expect(2);
+
   const form = this.subject();
 
   form.set('start', null);
@@ -81,6 +89,8 @@ test('it validates start date', function(assert) {
 });
 
 test('it validates end date', function(assert) {
+  assert.expect(2);
+
   const form = this.subject();
 
   form.set('start', moment());
@@ -92,4 +102,34 @@ test('it validates end date', function(assert) {
 
   assert.equal(result.valid, false, "Form is not valid.");
   assert.equal(result.message, "No check-out date. 😫", "Bad end date.");
+});
+
+test('validation options are a whitelist', function(assert) {
+  assert.expect(6);
+
+  const form = this.subject();
+
+  form.set('start', null);
+  form.set('end', null);
+  form.set('rental', null);
+  form.set('email', "hello@world.com");
+
+  let result = form.validate({email: true});
+
+  assert.equal(result.valid, true, "Form is valid.");
+  assert.equal(result.message, null, "No message when form is valid.");
+
+  form.set('email', null);
+  form.set('start', moment());
+  form.set('end', moment().add(5, 'days'));
+
+  result = form.validate({range: true});
+
+  assert.equal(result.valid, true, "Form is valid.");
+  assert.equal(result.message, null, "No message when form is valid.");
+
+  result = form.validate();
+
+  assert.equal(result.valid, false, "Form is not valid.");
+  assert.equal(result.message, "No rental. 😫", "No rental.");
 });
