@@ -7,14 +7,14 @@ export default Ember.Component.extend({
 
   actions: {
     updateSelected(rental, trigger) {
-      this.set('selected', rental);
-
       if (this.get('onselected')) {
         this.get('onselected')(rental);
       }
       else {
-        trigger.actions.close();
+        this.set('selected', rental);
       }
+
+      trigger.actions.close();
     }
   },
 

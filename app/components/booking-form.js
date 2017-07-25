@@ -1,8 +1,6 @@
 import Ember from 'ember';
-import CostCalculator from '../utils/cost-calculator';
+import BookingForm from '../models/booking-form';
 import { task } from 'ember-concurrency';
-
-const { computed } = Ember;
 
 export default Ember.Component.extend({
   tagName: 'form',
@@ -10,11 +8,11 @@ export default Ember.Component.extend({
 
   store: Ember.inject.service(),
 
-  rental: null,
-  range: null,
-  cost: computed('rental', 'range', function() {
-    return CostCalculator(this.get('rental'), this.get('range'));
-  }),
+  init() {
+    this._super(...arguments);
+
+    this.set('model', BookingForm.create());
+  },
 
   actions: {
 
@@ -34,6 +32,14 @@ export default Ember.Component.extend({
       else {
         this._hideModal(...arguments);
       }
+    },
+
+    updateRental(rental) {
+      this.get('model').set('rental', rental);
+    },
+
+    updateRange(_rental, range) {
+      this.get('model').setProperties(range);
     }
   },
 
@@ -41,20 +47,20 @@ export default Ember.Component.extend({
     // Prevent form from submitting
     evt.preventDefault();
 
-    // Ask user for email address and fetch the
-    // rental relationship and the check-in/check-out dates.
-    const rental  = this.get('rental');
-    const range   = this.get('range');
+    const model = this.get('model');
 
-    // Save if valid, otherwise show error
-    if (this._isValid({ rental: rental, range: range, skip_email: true })) {
-      const email = window.prompt("What is your email?");
+    let validations = model.validate({skip_email: true});
+    if (!validations.valid) { return this._alert(validations.message); }
 
-      if (this._isValid({skip_rental: true, skip_range: true, email: email})) {
-        const booking = this._createBooking(rental, range, email);
-        this.get('submitTask').perform(booking);
-      }
-    }
+    model.set('email', window.prompt("What is your email?"));
+
+    validations = model.validate({skip_rental: true, skip_range: true});
+    if (!validations.valid) { return this._alert(validations.message); }
+
+    const booking = this._createBooking(
+      model.getProperties('rental', 'start', 'end', 'email'));
+
+    this.get('submitTask').perform(booking);
   },
 
   submitTask: task(function * (booking) {
@@ -76,58 +82,24 @@ export default Ember.Component.extend({
   },
 
   _showModal(modal) {
-    this.setProperties({
-      modalWindow: modal,
-      modalVisible: true
-    });
+    this.setProperties({ modalWindow: modal, modalVisible: true });
   },
 
-  _hideModal(modal, rental, range) {
-    this.setProperties({
-      modalWindow: null,
-      modalVisible: false,
-      rental: rental,
-      range: range
-    });
+  _hideModal() {
+    this.setProperties({ modalWindow: null, modalVisible: false });
   },
 
   _cleanup() {
-    this.setProperties({
-      rental: null,
-      range: null
-    });
+    this.set('model', BookingForm.create());
   },
 
-  _createBooking(rental, range, email) {
+  _createBooking({rental, start, end, email}) {
     return this.get('store').createRecord('booking', {
       rental: rental,
       clientEmail: email,
-      startAt: range.start,
-      endAt: range.end
+      startAt: start,
+      endAt: end
     });
-  },
-
-  _isValid(options={}) {
-    const rental = options["rental"];
-    const range  = options["range"];
-    const email  = options["email"];
-
-    if (!options["skip_rental"]) {
-      if (!rental)           { return this._alert("No rental. 😫"); }
-    }
-
-    if (!options["skip_range"]) {
-      if (!range)            { return this._alert("No rental dates. 😫"); }
-      if (!range.start)      { return this._alert("No check in date. 😫"); }
-      if (!range.end)        { return this._alert("No check out date. 😫"); }
-    }
-
-    if (!options["skip_email"]) {
-      if (!email)            { return this._alert("No email. 😫"); }
-      if (!email.match(/@/)) { return this._alert("Weird email address. 😫"); }
-    }
-
-    return true;
   },
 
   _alert(message) {

@@ -7,6 +7,11 @@ export default Ember.Component.extend({
   actions: {
     hide(rental, range) {
       this.get('hide')(rental, range);
+    },
+
+    onselected(dropdown, rental, range) {
+      this.get('onselected')(rental, range);
+      dropdown.actions.close();
     }
   },
 

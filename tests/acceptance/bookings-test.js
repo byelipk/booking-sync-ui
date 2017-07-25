@@ -17,35 +17,54 @@ moduleForAcceptance('Acceptance | bookings', {
 });
 
 
-test('create', function(assert) {
-  assert.expect(4);
+test('create - it works', function(assert) {
+  // assert.expect(4);
 
   window.alert = (message) => {
-    assert.equal("Your trip is booked! 😎", message);
-  }
+    andThen(function() {
+      assert.equal(message, "Your trip is booked! 😎", "Expected trip to be booked.");
+    });
+  };
 
   window.prompt = () => "email@example.org";
 
   visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '/search');
+    assert.equal(currentURL(), '/search', "Expected to be at /search");
   });
 
   fillIn('.ember-power-select-typeahead-input', 'Red Sox');
 
   click(".ember-power-select-option");
 
+  andThen(function() {
+    assert.equal(find(".ember-power-select-typeahead-input").val(), "Red Sox Game",
+      "Expected autocomplete to fill in input.");
+  });
+
   clickDropdown('.datepicker');
 
-  calendarSelect('.calendar', moment().add(30, 'days'));
-  calendarSelect('.calendar', moment().add(33, 'days'));
+  const startAt = moment().add(30, 'days');
+  const endAt   = moment().add(72, 'days');
+
+  calendarSelect('.calendar', startAt);
+  calendarSelect('.calendar', endAt);
+
+  andThen(function() {
+    assert.equal(find(".datepicker input").val(),
+      `${startAt.format("MMM DD")} - ${endAt.format("MMM DD")}`,
+      "Expected rental dates to change.");
+  });
 
   click("button[type='submit']");
 
   andThen(() => {
-    assert.equal(find(".ember-power-select-typeahead-input").val(), "");
-    assert.equal(find(".datepicker input").val(), "");
+    assert.equal(find(".ember-power-select-typeahead-input").val(), "",
+      "Expected autocomplete field to be empty.");
+
+    assert.equal(find(".datepicker input").val(), "",
+      "Expected datepicker input to be empty.");
   });
 });
 
@@ -88,8 +107,8 @@ test('create - invalid check-in and check-out', function(assert) {
   assert.expect(4);
 
   window.alert = (message) => {
-    assert.equal(message, "No rental dates. 😫",
-      "Expected bad check-in/check-out dates.");
+    assert.equal(message, "No check-in date. 😫",
+      "Expected bad check-in/check-out date.");
   }
 
   window.prompt = () => "email-at-example.org";
@@ -119,7 +138,7 @@ test('create - invalid check-in', function(assert) {
   assert.expect(4);
 
   window.alert = (message) => {
-    assert.equal(message, "No check out date. 😫", "Expected bad check out date.");
+    assert.equal(message, "No check-in date. 😫", "Expected bad check out date.");
   }
 
   window.prompt = () => "email-at-example.org";

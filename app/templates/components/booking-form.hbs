@@ -2,8 +2,8 @@
   {{to-elsewhere
       named="modal"
       send=(component modalWindow
-        rental=rental
-        range=range
+        rental=model.rental
+        range=model.range
         hide=(action 'hide' modalWindow)) }}
 {{/if}}
 
@@ -12,8 +12,8 @@
       named="dropdown"
       send=(
         component 'dropdown-menu'
-          rental=rental
-          range=range
+          rental=model.rental
+          range=model.range
           hide=(action 'hide' 'dropdown-menu')
           what=(action 'show' 'typeahead-modal')
           when=(action 'show' 'datepicker-modal')
@@ -25,15 +25,15 @@
   <div class="large-screen">
     <div class="booking-form-group">
       <label for="what">What</label>
-      {{typeahead-input selected=rental}}
+      {{typeahead-input selected=model.rental onselected=(action 'updateRental')}}
     </div>
     <div class="booking-form-group">
       <label for="when">When</label>
-      {{datepicker-input range=range dropdown=true}}
+      {{datepicker-input range=model.range dropdown=true onselected=(action 'updateRange')}}
     </div>
     <div class="booking-form-group">
       <label for="how-much">How much</label>
-      {{invoice-input rental=rental range=range}}
+      {{invoice-input rental=model.rental range=model.range}}
     </div>
     <div class="booking-form-group">
       {{submit-button
@@ -48,8 +48,8 @@
   <div class="medium-screen">
     <div class="booking-form-group modal-toggle">
       <button {{action 'show' 'typeahead-modal'}} type="button" class="btn-block btn-lg">
-        {{#if rental.name}}
-          {{rental.name}}
+        {{#if (and model.rental model.rental.name)}}
+          {{model.rental.name}}
         {{else}}
           What
         {{/if}}
@@ -57,8 +57,8 @@
     </div>
     <div class="booking-form-group modal-toggle">
       <button {{action 'show' 'datepicker-modal'}} type="button" class="btn-block btn-lg">
-        {{#if (and range.start range.end)}}
-          {{format-date-range range.start range.end}}
+        {{#if (and model.start model.end)}}
+          {{format-date-range model.start model.end}}
         {{else}}
           When
         {{/if}}
@@ -66,7 +66,7 @@
     </div>
     <div class="booking-form-group modal-toggle">
       <button {{action 'show' 'invoice-modal'}} type="button" class="btn-block btn-lg">
-        {{if cost (currency cost '$') 'How much'}}
+        {{if cost (currency model.cost '$') 'How much'}}
       </button>
     </div>
     <div class="booking-form-group">
