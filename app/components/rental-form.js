@@ -51,7 +51,7 @@ export default Ember.Component.extend({
 
   _isValid(options={}) {
     const name = options["name"];
-    const rate = options["rate"];
+    const rate = parseInt(options["rate"], 10);
 
     if (!options["skip_name"]) {
       if (!name)            { return this._alert("No name. 😕"); }
@@ -59,10 +59,10 @@ export default Ember.Component.extend({
     }
 
     if (!options["skip_rate"]) {
-      if (!rate)                     { return this._alert("No rate. 😕"); }
-      if (isNaN(parseInt(rate, 10))) { return this._alert("No rate. 😕"); }
-      if (rate <= 0)                 { return this._alert("That's not fair to you. 😕"); }
-      if (rate.length > 10)          { return this._alert("No one will pay that. 😯"); }
+      if (!rate)                 { return this._alert("No rate. 😕"); }
+      if (isNaN(rate))           { return this._alert("No rate. 😕"); }
+      if (rate < 0)              { return this._alert("That's not fair to you. 😕"); }
+      if (rate.length > 1000000) { return this._alert("No one will pay that. 😯"); }
     }
 
     return true;
@@ -70,12 +70,6 @@ export default Ember.Component.extend({
 
   _alert(message) {
     window.alert(message);
-
-    if (!Ember.testing) {
-      throw new Error(message);
-    }
-    else {
-      return false;
-    }
+    return false;
   }
 });
