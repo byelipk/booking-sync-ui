@@ -49,11 +49,18 @@ export default Ember.Component.extend({
 
     const model = this.get('model');
 
+    // Before we ask for the user's email address, we
+    // validate that the form has a rental object and
+    // check-in/check-out dates.
     let validations = model.validate({rental: true, range: true});
     if (!validations.valid) { return this._alert(validations.message); }
 
+    // Once the fields the user can fill in through the user
+    // interface have been validated, we'll ask the user
+    // for their email address. The email address will be
+    // validated before a POST request is made to the server
+    // to create a booking.
     model.set('email', window.prompt("What is your email?"));
-
     validations = model.validate({email: true});
     if (!validations.valid) { return this._alert(validations.message); }
 
