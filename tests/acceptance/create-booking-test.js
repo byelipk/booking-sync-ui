@@ -17,7 +17,7 @@ moduleForAcceptance('Acceptance | create booking', {
 });
 
 
-test('booking a rental from /search', function(assert) {
+test('it works', function(assert) {
   assert.expect(4);
 
   window.alert = (message) => {
@@ -30,23 +30,25 @@ test('booking a rental from /search', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/search');
+  });
 
-    fillIn('.ember-power-select-typeahead-input', 'Red Sox');
+  fillIn('.ember-power-select-typeahead-input', 'Red Sox');
 
-    andThen(() => {
-      click(find(".ember-power-select-option"));
+  andThen(() => {
+    click(find(".ember-power-select-option"));
+  });
 
-      clickDropdown('.datepicker');
+  clickDropdown('.datepicker');
 
-      calendarSelect('.calendar', moment().add(30, 'days'));
-      calendarSelect('.calendar', moment().add(33, 'days'));
+  calendarSelect('.calendar', moment().add(30, 'days'));
+  calendarSelect('.calendar', moment().add(33, 'days'));
 
-      click("button[type='submit']");
+  andThen(() => {
+    click("button[type='submit']");
+  });
 
-      andThen(() => {
-        assert.equal(find(".ember-power-select-typeahead-input").val(), "");
-        assert.equal(find(".datepicker input").val(), "");
-      });
-    });
+  andThen(() => {
+    assert.equal(find(".ember-power-select-typeahead-input").val(), "");
+    assert.equal(find(".datepicker input").val(), "");
   });
 });
