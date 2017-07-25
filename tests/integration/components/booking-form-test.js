@@ -1,13 +1,5 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-// import wait from 'ember-test-helpers/wait';
-
-// import moment from 'moment';
-// import { typeInSearch } from '../../helpers/ember-power-select';
-// import { click, findAll, find } from 'ember-native-dom-helpers';
-// import { clickTrigger, /*tapTrigger*/ } from 'client/tests/helpers/ember-basic-dropdown';
-
-// import { startMirage } from 'client/initializers/ember-cli-mirage';
 
 moduleForComponent('booking-form', 'Integration | Component | booking form', {
   integration: true
@@ -56,31 +48,3 @@ test('dom when screen size is small', function(assert) {
   assert.equal(this.$('.small-screen button').length, 1,
       "Expected 1 nested button.");
 });
-
-// This should be an acceptance test
-//
-// test('filling out the form', function(assert) {
-//   // assert.expect(1);
-//
-//   this.render(hbs`{{booking-form}}`);
-//
-//   typeInSearch('Red Sox');
-//
-//   return wait().then(() => {
-//
-//     click(findAll('.ember-power-select-option')[0]);
-//
-//     clickTrigger('.datepicker');
-//
-//     return wait().then(() => {
-//
-//       debugger;
-//       calendarSelect('.calendar', moment());
-//       calendarSelect('.calendar', moment().add(2, 'days'));
-//       debugger;
-//
-//       assert.ok(true);
-//
-//     });
-//   });
-// });
