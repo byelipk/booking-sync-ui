@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { JSONAPISerializer } from 'ember-cli-mirage';
 var underscore = Ember.String.underscore;
 
